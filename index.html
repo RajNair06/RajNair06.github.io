@@ -136,7 +136,7 @@
     }
 
     .hero-tagline {
-      font-size: 1rem;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
       color: #888;
       max-width: 600px;
       line-height: 1.6;
@@ -165,7 +165,14 @@
     }
 
     @media (max-width: 768px) {
-      .brutal-section { padding: 60px 0; }
+      .brutal-section { padding: 40px 0; }
+      .hero-title { font-size: clamp(2.5rem, 15vw, 3rem); }
+      .brutal-social { width: 40px; height: 40px; font-size: 1rem; }
+      .brutal-btn { padding: 8px 18px; font-size: 0.7rem; }
+    }
+
+    @media (max-width: 400px) {
+      .hero-title { font-size: clamp(2rem, 12vw, 2.5rem); }
     }
   </style>
 </head>
@@ -194,7 +201,7 @@
           Focused on clean architecture, observability, and systems that scale.
         </p>
 
-        <div class="flex items-center gap-4 fade-up fade-up-d3">
+        <div class="flex flex-wrap items-center gap-4 fade-up fade-up-d3">
           <a href="/projects.html" class="brutal-btn">
             <i class="fa-regular fa-eye"></i> Projects
           </a>
@@ -228,7 +235,7 @@
   <footer class="brutal-section px-6">
     <div class="max-w-6xl mx-auto fade-up fade-up-d5">
       <p class="brutal-heading">Connect</p>
-      <div class="flex items-center gap-4 mb-8">
+      <div class="flex flex-wrap items-center gap-4 mb-8">
         <a href="mailto:nairraj311@gmail.com" class="brutal-social" aria-label="Email">
           <i class="fa-regular fa-envelope"></i>
         </a>

@@ -188,7 +188,16 @@
     }
 
     @media (max-width: 768px) {
-      .brutal-section { padding: 60px 0; }
+      .brutal-section { padding: 40px 0; }
+      .project-card { padding: 16px; }
+      .project-title { font-size: 1rem; }
+      .project-desc { font-size: 0.8rem; }
+      .brutal-btn { padding: 8px 18px; font-size: 0.7rem; }
+    }
+
+    @media (max-width: 400px) {
+      .project-card { padding: 12px; }
+      .badge { font-size: 0.55rem; padding: 2px 8px; }
     }
   </style>
 </head>
@@ -202,12 +211,12 @@
   </nav>
 
   <!-- PROJECTS -->
-  <section class="min-h-screen px-6 pt-28 pb-16">
+  <section class="min-h-screen px-6 pt-24 md:pt-28 pb-16">
     <div class="max-w-6xl mx-auto">
       <p class="brutal-heading fade-up fade-up-d1">Projects</p>
-      <h1 class="text-4xl md:text-5xl font-black text-white mb-12 uppercase tracking-tight fade-up fade-up-d2">Things I've Built</h1>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-8 uppercase tracking-tight fade-up fade-up-d2">Things I've Built</h1>
 
-      <div class="grid md:grid-cols-2 gap-6">
+      <div class="grid md:grid-cols-2 gap-5 md:gap-6">
 
         <!-- Project 1 -->
         <div class="project-card fade-up fade-up-d3">
@@ -225,7 +234,7 @@
             <span class="badge">Redis</span>
             <span class="badge">Dramatiq</span>
           </div>
-          <div class="flex items-center gap-3">
+          <div class="flex flex-wrap items-center gap-3">
             <a href="https://github.com/RajNair06/wallet" target="_blank" rel="noopener" class="brutal-btn-ghost">
               <i class="fa-brands fa-github"></i> GitHub
             </a>
@@ -252,7 +261,7 @@
             <span class="badge">Celery</span>
             <span class="badge">Docker</span>
           </div>
-          <div class="flex items-center gap-3">
+          <div class="flex flex-wrap items-center gap-3">
             <a href="https://github.com/RajNair06/task_board" target="_blank" rel="noopener" class="brutal-btn-ghost">
               <i class="fa-brands fa-github"></i> GitHub
             </a>
@@ -274,7 +283,7 @@
             <span class="badge">PostgreSQL</span>
             <span class="badge">Prometheus</span>
           </div>
-          <div class="flex items-center gap-3">
+          <div class="flex flex-wrap items-center gap-3">
             <a href="https://github.com/RajNair06/vigil" target="_blank" rel="noopener" class="brutal-btn-ghost">
               <i class="fa-brands fa-github"></i> GitHub
             </a>
@@ -298,7 +307,7 @@
             <span class="badge">Celery</span>
             <span class="badge">Docker</span>
           </div>
-          <div class="flex items-center gap-3">
+          <div class="flex flex-wrap items-center gap-3">
             <a href="https://github.com/RajNair06/learnflow_backend" target="_blank" rel="noopener" class="brutal-btn-ghost">
               <i class="fa-brands fa-github"></i> GitHub
             </a>
@@ -321,7 +330,7 @@
             <span class="badge">Chart.js</span>
             <span class="badge">Bootstrap 5</span>
           </div>
-          <div class="flex items-center gap-3">
+          <div class="flex flex-wrap items-center gap-3">
             <a href="https://github.com/RajNair06/tradeforge_web" target="_blank" rel="noopener" class="brutal-btn-ghost">
               <i class="fa-brands fa-github"></i> GitHub
             </a>
@@ -333,7 +342,7 @@
 
       </div>
 
-      <div class="mt-16 fade-up fade-up-d5">
+      <div class="mt-10 fade-up fade-up-d5">
         <a href="/" class="brutal-btn">&larr; Back Home</a>
       </div>
     </div>

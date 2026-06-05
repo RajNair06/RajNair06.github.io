@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Raj Nair</title>
+  <meta name="description" content="Projects built by Raj Nair — backend engineer specializing in Python, FastAPI, Django, distributed systems, and real-time applications.">
+  <meta name="keywords" content="Raj Nair, projects, portfolio, backend, Python, FastAPI, Django, GitHub">
+  <meta name="author" content="Raj Nair">
+  <link rel="canonical" href="https://rajnair06.github.io/projects.html">
+  <meta property="og:title" content="Projects — Raj Nair">
+  <meta property="og:description" content="Projects built by Raj Nair — backend engineer specializing in Python, FastAPI, Django, distributed systems, and real-time applications.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rajnair06.github.io/projects.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Projects — Raj Nair">
+  <meta name="twitter:description" content="Projects built by Raj Nair — backend engineer specializing in Python, FastAPI, Django, distributed systems, and real-time applications.">
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: #000;
+      color: #fff;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #000; }
+    ::-webkit-scrollbar-thumb { background: #333; }
+
+    .brutal-nav {
+      border-bottom: 3px solid #fff;
+      background: #000;
+    }
+
+    .brutal-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .brutal-nav a:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .brutal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      border: 2px solid #fff;
+      color: #fff;
+      background: #000;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .brutal-btn:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .brutal-btn-small {
+      padding: 6px 14px;
+      font-size: 0.65rem;
+    }
+
+    .brutal-section {
+      border-top: 3px solid #fff;
+      padding: 80px 0;
+    }
+
+    .brutal-heading {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      color: #888;
+    }
+
+    .brutal-link {
+      color: #fff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+
+    .brutal-link:hover {
+      background: #fff;
+      color: #000;
+      text-decoration: none;
+    }
+
+    .project-card {
+      border: 2px solid #fff;
+      padding: 24px;
+    }
+
+    .project-card:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .project-card:hover .project-title { color: #000; }
+    .project-card:hover .project-desc { color: #333; }
+    .project-card:hover .badge { border-color: #000; color: #000; }
+    .project-card:hover .brutal-btn-ghost { border-color: #000; color: #000; }
+    .project-card:hover .brutal-btn-ghost:hover { background: #000; color: #fff; }
+
+    .project-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .project-desc {
+      font-size: 0.85rem;
+      color: #888;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      font-size: 0.6rem;
+      font-weight: 500;
+      border: 1px solid #555;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .brutal-btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border: 1px solid #555;
+      color: #aaa;
+      background: transparent;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .brutal-btn-ghost:hover {
+      border-color: #fff;
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .brutal-section { padding: 60px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="brutal-nav">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/">Raj Nair</a>
+      <div class="flex items-center gap-8">
+        <a href="/projects.html">Projects</a>
+        <a href="mailto:nairraj311@gmail.com" class="brutal-btn brutal-btn-solid text-xs px-4 py-2">
+          <i class="fa-regular fa-paper-plane"></i> Reach Out
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PROJECTS -->
+  <section class="min-h-screen px-6 pt-28 pb-16">
+    <div class="max-w-6xl mx-auto">
+      <p class="brutal-heading">Projects</p>
+      <h1 class="text-4xl md:text-5xl font-black text-white mb-12 uppercase tracking-tight">Things I've Built</h1>
+
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- Project 1 -->
+        <div class="project-card">
+          <div class="flex items-start justify-between mb-4">
+            <p class="text-xs font-bold text-gray-600 tracking-widest">01</p>
+          </div>
+          <h2 class="project-title">Wallet Payment Backend</h2>
+          <p class="project-desc">
+            Production-grade digital wallet API with double-entry ledger accounting and idempotent transaction processing.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="badge">FastAPI</span>
+            <span class="badge">SQLModel</span>
+            <span class="badge">PostgreSQL</span>
+            <span class="badge">Redis</span>
+            <span class="badge">Dramatiq</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <a href="https://github.com/RajNair06/wallet" target="_blank" rel="noopener" class="brutal-btn-ghost">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+            <a href="https://wallet-tv64.onrender.com" target="_blank" rel="noopener" class="brutal-btn-ghost">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div class="flex items-start justify-between mb-4">
+            <p class="text-xs font-bold text-gray-600 tracking-widest">02</p>
+          </div>
+          <h2 class="project-title">Real-time Collaborative Task Board</h2>
+          <p class="project-desc">
+            Trello-like backend with real-time collaboration via WebSockets and Redis pub/sub.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="badge">FastAPI</span>
+            <span class="badge">WebSockets</span>
+            <span class="badge">PostgreSQL</span>
+            <span class="badge">Redis</span>
+            <span class="badge">Celery</span>
+            <span class="badge">Docker</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <a href="https://github.com/RajNair06/task_board" target="_blank" rel="noopener" class="brutal-btn-ghost">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <div class="flex items-start justify-between mb-4">
+            <p class="text-xs font-bold text-gray-600 tracking-widest">03</p>
+          </div>
+          <h2 class="project-title">Vigil — Intrusion Detection System</h2>
+          <p class="project-desc">
+            Real-time log ingestion and two-stage attack detection pipeline with observability.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="badge">FastAPI</span>
+            <span class="badge">SQLAlchemy</span>
+            <span class="badge">PostgreSQL</span>
+            <span class="badge">Prometheus</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <a href="https://github.com/RajNair06/vigil" target="_blank" rel="noopener" class="brutal-btn-ghost">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card">
+          <div class="flex items-start justify-between mb-4">
+            <p class="text-xs font-bold text-gray-600 tracking-widest">04</p>
+          </div>
+          <h2 class="project-title">LearnFlow Backend</h2>
+          <p class="project-desc">
+            Goal-tracking platform with tier-based rate limiting, Redis caching, and Celery-scheduled reminders.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="badge">Django</span>
+            <span class="badge">DRF</span>
+            <span class="badge">PostgreSQL</span>
+            <span class="badge">Redis</span>
+            <span class="badge">Celery</span>
+            <span class="badge">Docker</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <a href="https://github.com/RajNair06/learnflow_backend" target="_blank" rel="noopener" class="brutal-btn-ghost">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card">
+          <div class="flex items-start justify-between mb-4">
+            <p class="text-xs font-bold text-gray-600 tracking-widest">05</p>
+          </div>
+          <h2 class="project-title">TradeForge</h2>
+          <p class="project-desc">
+            Technical analysis platform and API with real-time stock data, SMA indicators, and interactive Chart.js visualizations.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="badge">FastAPI</span>
+            <span class="badge">Redis</span>
+            <span class="badge">yfinance</span>
+            <span class="badge">Chart.js</span>
+            <span class="badge">Bootstrap 5</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <a href="https://github.com/RajNair06/tradeforge_web" target="_blank" rel="noopener" class="brutal-btn-ghost">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+            <a href="https://tradeforgeweb-production.up.railway.app/" target="_blank" rel="noopener" class="brutal-btn-ghost">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-16">
+        <a href="/" class="brutal-btn brutal-btn-solid">&larr; Back Home</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

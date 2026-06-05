@@ -64,6 +64,7 @@
       text-decoration: none;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      cursor: pointer;
     }
 
     .brutal-btn:hover {
@@ -71,9 +72,10 @@
       color: #000;
     }
 
-    .brutal-btn-small {
-      padding: 6px 14px;
-      font-size: 0.65rem;
+    .brutal-btn:active {
+      background: #888;
+      color: #000;
+      border-color: #888;
     }
 
     .brutal-section {
@@ -167,6 +169,24 @@
       color: #fff;
     }
 
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .fade-up-d1 { animation-delay: 0.1s; }
+    .fade-up-d2 { animation-delay: 0.2s; }
+    .fade-up-d3 { animation-delay: 0.3s; }
+    .fade-up-d4 { animation-delay: 0.4s; }
+    .fade-up-d5 { animation-delay: 0.5s; }
+    .fade-up-d6 { animation-delay: 0.6s; }
+    .fade-up-d7 { animation-delay: 0.7s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     @media (max-width: 768px) {
       .brutal-section { padding: 60px 0; }
     }
@@ -178,25 +198,19 @@
   <nav class="brutal-nav">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="/">Raj Nair</a>
-      <div class="flex items-center gap-8">
-        <a href="/projects.html">Projects</a>
-        <a href="mailto:nairraj311@gmail.com" class="brutal-btn brutal-btn-solid text-xs px-4 py-2">
-          <i class="fa-regular fa-paper-plane"></i> Reach Out
-        </a>
-      </div>
     </div>
   </nav>
 
   <!-- PROJECTS -->
   <section class="min-h-screen px-6 pt-28 pb-16">
     <div class="max-w-6xl mx-auto">
-      <p class="brutal-heading">Projects</p>
-      <h1 class="text-4xl md:text-5xl font-black text-white mb-12 uppercase tracking-tight">Things I've Built</h1>
+      <p class="brutal-heading fade-up fade-up-d1">Projects</p>
+      <h1 class="text-4xl md:text-5xl font-black text-white mb-12 uppercase tracking-tight fade-up fade-up-d2">Things I've Built</h1>
 
       <div class="grid md:grid-cols-2 gap-6">
 
         <!-- Project 1 -->
-        <div class="project-card">
+        <div class="project-card fade-up fade-up-d3">
           <div class="flex items-start justify-between mb-4">
             <p class="text-xs font-bold text-gray-600 tracking-widest">01</p>
           </div>
@@ -222,7 +236,7 @@
         </div>
 
         <!-- Project 2 -->
-        <div class="project-card">
+        <div class="project-card fade-up fade-up-d4">
           <div class="flex items-start justify-between mb-4">
             <p class="text-xs font-bold text-gray-600 tracking-widest">02</p>
           </div>
@@ -246,7 +260,7 @@
         </div>
 
         <!-- Project 3 -->
-        <div class="project-card">
+        <div class="project-card fade-up fade-up-d5">
           <div class="flex items-start justify-between mb-4">
             <p class="text-xs font-bold text-gray-600 tracking-widest">03</p>
           </div>
@@ -268,7 +282,7 @@
         </div>
 
         <!-- Project 4 -->
-        <div class="project-card">
+        <div class="project-card fade-up fade-up-d6">
           <div class="flex items-start justify-between mb-4">
             <p class="text-xs font-bold text-gray-600 tracking-widest">04</p>
           </div>
@@ -292,7 +306,7 @@
         </div>
 
         <!-- Project 5 -->
-        <div class="project-card">
+        <div class="project-card fade-up fade-up-d7">
           <div class="flex items-start justify-between mb-4">
             <p class="text-xs font-bold text-gray-600 tracking-widest">05</p>
           </div>
@@ -319,8 +333,8 @@
 
       </div>
 
-      <div class="mt-16">
-        <a href="/" class="brutal-btn brutal-btn-solid">&larr; Back Home</a>
+      <div class="mt-16 fade-up fade-up-d5">
+        <a href="/" class="brutal-btn">&larr; Back Home</a>
       </div>
     </div>
   </section>

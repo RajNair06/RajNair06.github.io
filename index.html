@@ -64,7 +64,7 @@
       text-decoration: none;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      transition: none;
+      cursor: pointer;
     }
 
     .brutal-btn:hover {
@@ -72,14 +72,10 @@
       color: #000;
     }
 
-    .brutal-btn-solid {
-      background: #fff;
+    .brutal-btn:active {
+      background: #888;
       color: #000;
-    }
-
-    .brutal-btn-solid:hover {
-      background: #000;
-      color: #fff;
+      border-color: #888;
     }
 
     .brutal-section {
@@ -150,9 +146,26 @@
       display: block;
     }
 
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .fade-up-d1 { animation-delay: 0.1s; }
+    .fade-up-d2 { animation-delay: 0.2s; }
+    .fade-up-d3 { animation-delay: 0.3s; }
+    .fade-up-d4 { animation-delay: 0.4s; }
+    .fade-up-d5 { animation-delay: 0.5s; }
+    .fade-up-d6 { animation-delay: 0.6s; }
+    .fade-up-d7 { animation-delay: 0.7s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     @media (max-width: 768px) {
       .brutal-section { padding: 60px 0; }
-      .hide-mobile { display: none; }
     }
   </style>
 </head>
@@ -162,12 +175,6 @@
   <nav class="brutal-nav">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="/" class="text-base font-bold tracking-tight">Raj Nair</a>
-      <div class="flex items-center gap-8">
-        <a href="/projects.html">Projects</a>
-        <a href="mailto:nairraj311@gmail.com" class="brutal-btn brutal-btn-solid text-xs px-4 py-2">
-          <i class="fa-regular fa-paper-plane"></i> Reach Out
-        </a>
-      </div>
     </div>
   </nav>
 
@@ -175,22 +182,20 @@
   <section class="min-h-screen flex items-center relative px-6">
     <div class="max-w-6xl mx-auto w-full pt-24 pb-16">
       <div class="max-w-4xl">
-        <p class="text-xs text-gray-600 font-medium tracking-widest mb-6 uppercase">
-          Backend Engineer
-        </p>
+        
 
-        <h1 class="hero-title mb-8">
+        <h1 class="hero-title mb-8 fade-up fade-up-d1">
           <span class="hero-line">Raj</span>
           <span class="hero-line">Nair</span>
         </h1>
 
-        <p class="hero-tagline mb-10">
-          Builds production-grade APIs, distributed systems, and real-time backends in Python.
+        <p class="hero-tagline mb-10 fade-up fade-up-d2">
+          Building production-grade APIs, distributed systems, and real-time backends in Python.
           Focused on clean architecture, observability, and systems that scale.
         </p>
 
-        <div class="flex items-center gap-4">
-          <a href="/projects.html" class="brutal-btn brutal-btn-solid">
+        <div class="flex items-center gap-4 fade-up fade-up-d3">
+          <a href="/projects.html" class="brutal-btn">
             <i class="fa-regular fa-eye"></i> Projects
           </a>
           <a href="mailto:nairraj311@gmail.com" class="brutal-btn">
@@ -203,12 +208,12 @@
 
   <!-- ABOUT -->
   <section class="brutal-section px-6">
-    <div class="max-w-6xl mx-auto">
+    <div class="max-w-6xl mx-auto fade-up fade-up-d4">
       <p class="brutal-heading">About</p>
       <div class="max-w-3xl space-y-5 text-base leading-relaxed text-gray-400">
         <p>
           I'm a backend engineer who builds production-grade systems — reliable, observable, and built to scale.
-          My stack: Python, FastAPI, Django, PostgreSQL, Redis, Docker, Celery.
+          
         </p>
         <p>
           I care about clean architecture. Idempotency, rate limiting, RBAC, and audit logging aren't afterthoughts —
@@ -221,7 +226,7 @@
 
   <!-- FOOTER / SOCIALS -->
   <footer class="brutal-section px-6">
-    <div class="max-w-6xl mx-auto">
+    <div class="max-w-6xl mx-auto fade-up fade-up-d5">
       <p class="brutal-heading">Connect</p>
       <div class="flex items-center gap-4 mb-8">
         <a href="mailto:nairraj311@gmail.com" class="brutal-social" aria-label="Email">
@@ -237,9 +242,7 @@
           <i class="fa-brands fa-x-twitter"></i>
         </a>
       </div>
-      <p class="text-xs text-gray-700">
-        Mumbai, India
-      </p>
+      
     </div>
   </footer>
 

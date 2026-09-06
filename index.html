@@ -163,6 +163,75 @@
     .fade-up-d5 { animation-delay: 0.5s; }
     .fade-up-d6 { animation-delay: 0.6s; }
     .fade-up-d7 { animation-delay: 0.7s; }
+    .fade-up-d8 { animation-delay: 0.8s; }
+    .fade-up-d9 { animation-delay: 0.9s; }
+    .fade-up-d10 { animation-delay: 1.0s; }
+    .fade-up-d11 { animation-delay: 1.1s; }
+    .fade-up-d12 { animation-delay: 1.2s; }
+
+    .project-card {
+      border: 2px solid #fff;
+      padding: 24px;
+    }
+
+    .project-card:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .project-card:hover .project-title { color: #000; }
+    .project-card:hover .project-desc { color: #333; }
+    .project-card:hover .badge { border-color: #000; color: #000; }
+    .project-card:hover .brutal-btn-ghost { border-color: #000; color: #000; }
+    .project-card:hover .brutal-btn-ghost:hover { background: #000; color: #fff; }
+
+    .project-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .project-desc {
+      font-size: 0.85rem;
+      color: #888;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      font-size: 0.6rem;
+      font-weight: 500;
+      border: 1px solid #555;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .brutal-btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border: 1px solid #555;
+      color: #aaa;
+      background: transparent;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .brutal-btn-ghost:hover {
+      border-color: #fff;
+      color: #fff;
+    }
 
     @keyframes fadeUp {
       to { opacity: 1; transform: translateY(0); }
@@ -173,10 +242,15 @@
       .hero-title { font-size: clamp(2.5rem, 15vw, 3rem); }
       .brutal-social { width: 40px; height: 40px; font-size: 1rem; }
       .brutal-btn { padding: 8px 18px; font-size: 0.7rem; }
+      .project-card { padding: 16px; }
+      .project-title { font-size: 1rem; }
+      .project-desc { font-size: 0.8rem; }
     }
 
     @media (max-width: 400px) {
       .hero-title { font-size: clamp(2rem, 12vw, 2.5rem); }
+      .project-card { padding: 12px; }
+      .badge { font-size: 0.55rem; padding: 2px 8px; }
     }
   </style>
 </head>
@@ -232,9 +306,135 @@
     </div>
   </section>
 
+  <!-- PROJECTS -->
+  <section class="brutal-section px-6">
+    <div class="max-w-6xl mx-auto">
+      <p class="brutal-heading fade-up fade-up-d5">Projects</p>
+      <div class="grid md:grid-cols-2 gap-5 md:gap-6">
+
+        <div class="project-card fade-up fade-up-d6">
+          <div class="flex items-start justify-between mb-4">
+            <p class="text-xs font-bold text-gray-600 tracking-widest">01</p>
+          </div>
+          <h2 class="project-title">gopswatch — Linux System Monitor</h2>
+          <p class="project-desc">
+            Lightweight Linux resource monitor that reads metrics directly from /proc. No external dependencies. Supports CPU, memory, disk I/O, network, processes, and more.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="badge">Go</span>
+            <span class="badge">Linux</span>
+            <span class="badge">procfs</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-3">
+            <a href="https://github.com/RajNair06/gopswatch" target="_blank" rel="noopener" class="brutal-btn-ghost">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card fade-up fade-up-d7">
+          <div class="flex items-start justify-between mb-4">
+            <p class="text-xs font-bold text-gray-600 tracking-widest">02</p>
+          </div>
+          <h2 class="project-title">Load Balancer — Go</h2>
+          <p class="project-desc">
+            HTTP load balancer with round-robin, least-connections, and consistent hashing routing, health checks, circuit breaker, and a real-time WebSocket dashboard.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="badge">Go</span>
+            <span class="badge">WebSocket</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-3">
+            <a href="https://github.com/RajNair06/load_balancer" target="_blank" rel="noopener" class="brutal-btn-ghost">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card fade-up fade-up-d8">
+          <div class="flex items-start justify-between mb-4">
+            <p class="text-xs font-bold text-gray-600 tracking-widest">03</p>
+          </div>
+          <h2 class="project-title">Wallet Payment Backend</h2>
+          <p class="project-desc">
+            Production-grade digital wallet API with double-entry ledger accounting and idempotent transaction processing.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="badge">FastAPI</span>
+            <span class="badge">SQLModel</span>
+            <span class="badge">PostgreSQL</span>
+            <span class="badge">Redis</span>
+            <span class="badge">Dramatiq</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-3">
+            <a href="https://github.com/RajNair06/wallet" target="_blank" rel="noopener" class="brutal-btn-ghost">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+            <a href="https://wallet-tv64.onrender.com" target="_blank" rel="noopener" class="brutal-btn-ghost">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card fade-up fade-up-d9">
+          <div class="flex items-start justify-between mb-4">
+            <p class="text-xs font-bold text-gray-600 tracking-widest">04</p>
+          </div>
+          <h2 class="project-title">Vigil — Intrusion Detection System</h2>
+          <p class="project-desc">
+            Real-time log ingestion and two-stage attack detection pipeline with observability.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="badge">FastAPI</span>
+            <span class="badge">SQLAlchemy</span>
+            <span class="badge">PostgreSQL</span>
+            <span class="badge">Prometheus</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-3">
+            <a href="https://github.com/RajNair06/vigil" target="_blank" rel="noopener" class="brutal-btn-ghost">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card fade-up fade-up-d10">
+          <div class="flex items-start justify-between mb-4">
+            <p class="text-xs font-bold text-gray-600 tracking-widest">05</p>
+          </div>
+          <h2 class="project-title">TradeForge</h2>
+          <p class="project-desc">
+            Technical analysis platform and API with real-time stock data, SMA indicators, and interactive Chart.js visualizations.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="badge">FastAPI</span>
+            <span class="badge">Redis</span>
+            <span class="badge">yfinance</span>
+            <span class="badge">Chart.js</span>
+            <span class="badge">Bootstrap 5</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-3">
+            <a href="https://github.com/RajNair06/tradeforge_web" target="_blank" rel="noopener" class="brutal-btn-ghost">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+            <a href="https://tradeforgeweb-production.up.railway.app/" target="_blank" rel="noopener" class="brutal-btn-ghost">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-8 fade-up fade-up-d11">
+        <a href="/projects.html" class="brutal-btn">
+          <i class="fa-solid fa-arrow-right"></i> See All Projects
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER / SOCIALS -->
   <footer class="brutal-section px-6">
-    <div class="max-w-6xl mx-auto fade-up fade-up-d5">
+    <div class="max-w-6xl mx-auto fade-up fade-up-d12">
       <p class="brutal-heading">Connect</p>
       <div class="flex flex-wrap items-center gap-4 mb-8">
         <a href="mailto:nairraj311@gmail.com" class="brutal-social" aria-label="Email">

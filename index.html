@@ -146,7 +146,6 @@ section{padding:6rem 0}
 .quest__title{font-family:var(--font-display);font-size:0.85rem;margin-bottom:0.6rem}
 .quest__desc{color:var(--text-dim);font-size:1.15rem;max-width:60ch}
 .quest__stack{margin-top:0.75rem;font-family:var(--font-display);font-size:0.5rem;color:var(--rose);letter-spacing:0.05em}
-.quest__link{font-family:var(--font-display);font-size:0.6rem;white-space:nowrap;padding:0.5rem 0.6rem}
 
 @media (max-width:640px){.quest{grid-template-columns:1fr}}
 
@@ -225,11 +224,14 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offse
 
       <div class="quest pixel-panel">
         <div>
-          <div class="quest__title">gopswatch — Linux System Monitor</div>
-          <p class="quest__desc">Lightweight Linux resource monitor that reads metrics directly from /proc. No external dependencies. Supports CPU, memory, disk I/O, network, processes, and more.</p>
-          <div class="quest__stack">GO · LINUX · PROCFS</div>
+          <div class="quest__title">Relay — Distributed Job Queue</div>
+          <p class="quest__desc">A reliable distributed background job queue for Go, inspired by Celery and Dramatiq. Jobs persisted in PostgreSQL with automatic retries, priorities, dead letter queue, and graceful shutdown.</p>
+          <div class="quest__stack">GO · POSTGRESQL</div>
         </div>
-        <a href="https://github.com/RajNair06/gopswatch" target="_blank" class="pixel-btn ghost quest__link">GITHUB →</a>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+          <a href="https://github.com/RajNair06/relay" target="_blank" class="pixel-btn ghost">GITHUB →</a>
+          <a href="https://rajnair06.github.io/relay/" target="_blank" class="pixel-btn">DOCS →</a>
+        </div>
       </div>
 
       <div class="quest pixel-panel">
@@ -238,7 +240,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offse
           <p class="quest__desc">HTTP load balancer with round-robin, least-connections, and consistent hashing routing, health checks, circuit breaker, and a real-time WebSocket dashboard.</p>
           <div class="quest__stack">GO · WEBSOCKET</div>
         </div>
-        <a href="https://github.com/RajNair06/load_balancer" target="_blank" class="pixel-btn ghost quest__link">GITHUB →</a>
+        <a href="https://github.com/RajNair06/load_balancer" target="_blank" class="pixel-btn ghost">GITHUB →</a>
       </div>
 
       <div class="quest pixel-panel">
@@ -248,8 +250,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offse
           <div class="quest__stack">FASTAPI · SQLMODEL · POSTGRESQL · REDIS · DRAMATIQ</div>
         </div>
         <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-          <a href="https://github.com/RajNair06/wallet" target="_blank" class="pixel-btn ghost quest__link">GITHUB →</a>
-          <a href="https://wallet-tv64.onrender.com" target="_blank" class="pixel-btn quest__link">LIVE →</a>
+          <a href="https://github.com/RajNair06/wallet" target="_blank" class="pixel-btn ghost">GITHUB →</a>
+          <a href="https://wallet-tv64.onrender.com" target="_blank" class="pixel-btn">LIVE →</a>
         </div>
       </div>
 
@@ -259,7 +261,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offse
           <p class="quest__desc">Real-time log ingestion and two-stage attack detection pipeline with observability.</p>
           <div class="quest__stack">FASTAPI · SQLALCHEMY · POSTGRESQL · PROMETHEUS</div>
         </div>
-        <a href="https://github.com/RajNair06/vigil" target="_blank" class="pixel-btn ghost quest__link">GITHUB →</a>
+        <a href="https://github.com/RajNair06/vigil" target="_blank" class="pixel-btn ghost">GITHUB →</a>
       </div>
 
       <div class="quest pixel-panel">
@@ -269,8 +271,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offse
           <div class="quest__stack">FASTAPI · REDIS · YFINANCE · CHART.JS</div>
         </div>
         <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-          <a href="https://github.com/RajNair06/tradeforge_web" target="_blank" class="pixel-btn ghost quest__link">GITHUB →</a>
-          <a href="https://tradeforgeweb-production.up.railway.app/" target="_blank" class="pixel-btn quest__link">LIVE →</a>
+          <a href="https://github.com/RajNair06/tradeforge_web" target="_blank" class="pixel-btn ghost">GITHUB →</a>
+          <a href="https://tradeforgeweb-production.up.railway.app/" target="_blank" class="pixel-btn">LIVE →</a>
         </div>
       </div>
 
@@ -305,6 +307,39 @@ const toggle=document.getElementById('navToggle');
 const links=document.getElementById('navLinks');
 toggle.addEventListener('click',()=>links.classList.toggle('is-open'));
 links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('is-open')));
+
+// Pikachu natural walking movement
+const pikachu=document.createElement('img');
+pikachu.src='pikachu_run.gif';
+pikachu.style.cssText='position:fixed;width:40px;height:40px;z-index:10000;pointer-events:none;transition:all 4s linear;image-rendering:pixelated;';
+document.body.appendChild(pikachu);
+
+let pikachuX=window.innerWidth/2;
+let pikachuY=window.innerHeight/2;
+let pikachuDir=1;
+
+function movePikachu(){
+  const maxX=window.innerWidth-50;
+  const maxY=window.innerHeight-50;
+  
+  const stepX=(Math.random()*100+60)*pikachuDir;
+  const stepY=(Math.random()*60-30);
+  
+  pikachuX=Math.max(0,Math.min(maxX,pikachuX+stepX));
+  pikachuY=Math.max(0,Math.min(maxY,pikachuY+stepY));
+  
+  if(pikachuX<=5||pikachuX>=maxX-5){
+    pikachuDir*=-1;
+  }
+  
+  pikachu.style.transform=pikachuDir<0?'scaleX(-1)':'scaleX(1)';
+  pikachu.style.left=pikachuX+'px';
+  pikachu.style.top=pikachuY+'px';
+}
+
+pikachu.style.left=pikachuX+'px';
+pikachu.style.top=pikachuY+'px';
+setInterval(movePikachu,4500);
 </script>
 
 </body>

@@ -20,88 +20,204 @@
   <meta name="twitter:title" content="Raj Nair">
   <meta name="twitter:description" content="Raj Nair — I build things. Focused on backend, learning by doing. Python, Go, distributed systems.">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/nes.icons@latest/css/nes-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Tomorrow:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    html, body, pre, code, kbd, samp {
-      font-family: "Press Start 2P";
+    :root {
+      --hl: #faff00;
+      --onyx: #0a0a0a;
+      --zinc: #27272a;
+      --carbon: #18181b;
+      --white: #ffffff;
+      --steel: #9d9d9d;
+      --ash: #6c6c6c;
+      --smoke: #3b3b3b;
     }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background: #0a0a2e;
-      color: #fff;
-      overflow-x: hidden;
+      font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background: var(--onyx);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
     }
 
-    .starfield {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(1px 1px at 10% 20%, #fff, transparent),
-        radial-gradient(1px 1px at 20% 50%, #fff, transparent),
-        radial-gradient(1px 1px at 30% 10%, rgba(255,255,255,0.8), transparent),
-        radial-gradient(1px 1px at 40% 60%, #fff, transparent),
-        radial-gradient(1px 1px at 50% 30%, rgba(255,255,255,0.6), transparent),
-        radial-gradient(1px 1px at 60% 80%, #fff, transparent),
-        radial-gradient(1px 1px at 70% 15%, rgba(255,255,255,0.7), transparent),
-        radial-gradient(1px 1px at 80% 45%, #fff, transparent),
-        radial-gradient(1px 1px at 90% 70%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1px 1px at 15% 75%, #fff, transparent),
-        radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.9), transparent),
-        radial-gradient(1px 1px at 35% 90%, #fff, transparent),
-        radial-gradient(1px 1px at 45% 5%, rgba(255,255,255,0.6), transparent),
-        radial-gradient(1px 1px at 55% 55%, #fff, transparent),
-        radial-gradient(1px 1px at 65% 40%, rgba(255,255,255,0.8), transparent),
-        radial-gradient(1px 1px at 75% 85%, #fff, transparent),
-        radial-gradient(1px 1px at 85% 25%, rgba(255,255,255,0.7), transparent),
-        radial-gradient(1px 1px at 95% 65%, #fff, transparent),
-        radial-gradient(2px 2px at 12% 88%, rgba(147,197,253,0.8), transparent),
-        radial-gradient(2px 2px at 52% 12%, rgba(253,186,116,0.6), transparent),
-        radial-gradient(2px 2px at 88% 52%, rgba(167,139,250,0.7), transparent);
-      background-size: 200px 200px;
-      animation: twinkle 8s ease-in-out infinite alternate;
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--onyx); }
+    ::-webkit-scrollbar-thumb { background: var(--smoke); }
+
+    .font-heading {
+      font-family: 'Tomorrow', ui-sans-serif, system-ui, sans-serif;
     }
 
-    @keyframes twinkle {
-      0% { opacity: 0.7; }
-      100% { opacity: 1; }
+    .nav-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--onyx);
+      border-bottom: 1px solid var(--zinc);
+      height: 56px;
+      display: flex;
+      align-items: center;
     }
 
-    .scanlines {
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      pointer-events: none;
-      background: repeating-linear-gradient(
-        0deg,
-        rgba(0, 0, 0, 0.03) 0px,
-        rgba(0, 0, 0, 0.03) 1px,
-        transparent 1px,
-        transparent 2px
-      );
+    .nav-bar a {
+      color: var(--steel);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.15s;
     }
 
-    .content {
-      position: relative;
-      z-index: 1;
+    .nav-bar a:hover {
+      color: var(--hl);
     }
 
-    .blink {
-      animation: blink-anim 1s steps(1) infinite;
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--hl);
+      color: #000;
+      border: none;
+      border-radius: 9999px;
+      padding: 10px 20px;
+      font-family: 'Geist Mono', monospace;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.15s;
     }
 
-    @keyframes blink-anim {
+    .btn-primary:hover {
+      opacity: 0.85;
+    }
+
+    .btn-primary:active {
+      opacity: 0.7;
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--zinc);
+      border-radius: 6px;
+      padding: 10px 16px;
+      font-family: 'Geist Mono', monospace;
+      font-size: 14px;
+      font-weight: 400;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-ghost:hover {
+      background: var(--carbon);
+      border-color: var(--smoke);
+    }
+
+    .btn-ghost:active {
+      background: var(--zinc);
+    }
+
+    .btn-ghost-sm {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+
+    .card {
+      background: var(--onyx);
+      border: 1px solid var(--zinc);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 4px 10px;
+      font-size: 10px;
+      font-weight: 500;
+      border: 1px solid var(--zinc);
+      border-radius: 9999px;
+      color: var(--steel);
+      background: transparent;
+      text-decoration: none;
+    }
+
+    .pill-accent {
+      background: var(--hl);
+      color: #000;
+      border-color: var(--hl);
+    }
+
+    .hero-title {
+      font-family: 'Tomorrow', sans-serif;
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 1.17;
+      color: var(--white);
+    }
+
+    .hero-label {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--hl);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-family: 'Tomorrow', sans-serif;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.29;
+      color: var(--white);
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--steel);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .text-body {
+      font-size: 14px;
+      line-height: 1.43;
+      color: var(--steel);
+    }
+
+    .text-caption {
+      font-size: 10px;
+      color: var(--ash);
+    }
+
+    .cursor-blink {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: var(--hl);
+      margin-left: 4px;
+      vertical-align: text-bottom;
+      animation: blink 1s steps(1) infinite;
+    }
+
+    @keyframes blink {
       50% { opacity: 0; }
     }
 
     .typewriter {
       overflow: hidden;
-      border-right: 4px solid #fff;
       white-space: nowrap;
-      animation: typing 2.5s steps(50) forwards, blink-caret 0.75s step-end infinite;
+      border-right: none;
+      animation: typing 2.5s steps(60) forwards;
       max-width: 0;
     }
 
@@ -110,422 +226,340 @@
       to { max-width: 100%; }
     }
 
-    @keyframes blink-caret {
-      50% { border-color: transparent; }
+    .stat-bar-track {
+      width: 100%;
+      height: 4px;
+      background: var(--zinc);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .stat-bar-fill {
+      height: 100%;
+      background: var(--hl);
+      border-radius: 2px;
+      transition: width 0.8s ease;
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--zinc);
+      border-radius: 6px;
+      color: var(--steel);
+      font-size: 16px;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+
+    .social-icon:hover {
+      color: var(--hl);
+      border-color: var(--hl);
+      background: rgba(250, 255, 0, 0.05);
+    }
+
+    .project-card {
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--smoke);
+    }
+
+    .project-card:hover .project-title {
+      color: var(--hl);
+    }
+
+    .project-title {
+      font-family: 'Tomorrow', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.4;
+      transition: color 0.15s;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      line-height: 1.43;
+      color: var(--steel);
+    }
+
+    .divider {
+      border-top: 1px solid var(--zinc);
+      margin: 32px 0;
     }
 
     .fade-in {
       opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 0.8s ease forwards;
+      transform: translateY(12px);
+      animation: fadeIn 0.6s ease forwards;
     }
 
-    .fade-in-d1 { animation-delay: 0.2s; }
-    .fade-in-d2 { animation-delay: 0.4s; }
-    .fade-in-d3 { animation-delay: 0.6s; }
-    .fade-in-d4 { animation-delay: 0.8s; }
-    .fade-in-d5 { animation-delay: 1.0s; }
-    .fade-in-d6 { animation-delay: 1.2s; }
-    .fade-in-d7 { animation-delay: 1.4s; }
+    .fd1 { animation-delay: 0.1s; }
+    .fd2 { animation-delay: 0.2s; }
+    .fd3 { animation-delay: 0.3s; }
+    .fd4 { animation-delay: 0.4s; }
+    .fd5 { animation-delay: 0.5s; }
+    .fd6 { animation-delay: 0.6s; }
+    .fd7 { animation-delay: 0.7s; }
+    .fd8 { animation-delay: 0.8s; }
+    .fd9 { animation-delay: 0.9s; }
 
     @keyframes fadeIn {
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .float {
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    .bounce-idle {
-      animation: bounceIdle 1.5s ease-in-out infinite;
-    }
-
-    @keyframes bounceIdle {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
-    }
-
-    .walk {
-      animation: walk 0.6s steps(2) infinite;
-    }
-
-    @keyframes walk {
-      0% { transform: translateX(0); }
-      50% { transform: translateX(4px); }
-      100% { transform: translateX(0); }
-    }
-
-    .pixel-avatar {
-      width: 64px;
-      height: 64px;
-      image-rendering: pixelated;
-      background: transparent;
-      position: relative;
-    }
-
-    .pixel-avatar::after {
-      content: '';
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      top: 0;
-      left: 0;
-      box-shadow:
-        12px 0 0 0 #1a1a1a, 16px 0 0 0 #1a1a1a, 20px 0 0 0 #1a1a1a, 24px 0 0 0 #1a1a1a, 28px 0 0 0 #1a1a1a, 32px 0 0 0 #1a1a1a, 36px 0 0 0 #1a1a1a,
-        8px 4px 0 0 #1a1a1a, 12px 4px 0 0 #1a1a1a, 16px 4px 0 0 #2d1b00, 20px 4px 0 0 #2d1b00, 24px 4px 0 0 #2d1b00, 28px 4px 0 0 #2d1b00, 32px 4px 0 0 #2d1b00, 36px 4px 0 0 #2d1b00, 40px 4px 0 0 #1a1a1a,
-        8px 8px 0 0 #1a1a1a, 12px 8px 0 0 #2d1b00, 16px 8px 0 0 #2d1b00, 20px 8px 0 0 #2d1b00, 24px 8px 0 0 #2d1b00, 28px 8px 0 0 #2d1b00, 32px 8px 0 0 #2d1b00, 36px 8px 0 0 #2d1b00, 40px 8px 0 0 #1a1a1a,
-        8px 12px 0 0 #1a1a1a, 12px 12px 0 0 #6b3a1f, 16px 12px 0 0 #6b3a1f, 20px 12px 0 0 #1a1a1a, 24px 12px 0 0 #6b3a1f, 28px 12px 0 0 #1a1a1a, 32px 12px 0 0 #6b3a1f, 36px 12px 0 0 #6b3a1f, 40px 12px 0 0 #1a1a1a,
-        8px 16px 0 0 #1a1a1a, 12px 16px 0 0 #6b3a1f, 16px 16px 0 0 #6b3a1f, 20px 16px 0 0 #6b3a1f, 24px 16px 0 0 #6b3a1f, 28px 16px 0 0 #6b3a1f, 32px 16px 0 0 #6b3a1f, 36px 16px 0 0 #6b3a1f, 40px 16px 0 0 #1a1a1a,
-        12px 20px 0 0 #1a1a1a, 16px 20px 0 0 #1a1a1a, 20px 20px 0 0 #6b3a1f, 24px 20px 0 0 #6b3a1f, 28px 20px 0 0 #6b3a1f, 32px 20px 0 0 #1a1a1a, 36px 20px 0 0 #1a1a1a,
-        12px 24px 0 0 #1a1a1a, 16px 24px 0 0 #6b3a1f, 20px 24px 0 0 #6b3a1f, 24px 24px 0 0 #6b3a1f, 28px 24px 0 0 #6b3a1f, 32px 24px 0 0 #6b3a1f, 36px 24px 0 0 #1a1a1a,
-        8px 28px 0 0 #1a1a1a, 12px 28px 0 0 #209cee, 16px 28px 0 0 #209cee, 20px 28px 0 0 #1a1a1a, 24px 28px 0 0 #209cee, 28px 28px 0 0 #1a1a1a, 32px 28px 0 0 #209cee, 36px 28px 0 0 #209cee, 40px 28px 0 0 #1a1a1a,
-        8px 32px 0 0 #1a1a1a, 12px 32px 0 0 #209cee, 16px 32px 0 0 #209cee, 20px 32px 0 0 #209cee, 24px 32px 0 0 #209cee, 28px 32px 0 0 #209cee, 32px 32px 0 0 #209cee, 36px 32px 0 0 #209cee, 40px 32px 0 0 #1a1a1a,
-        8px 36px 0 0 #1a1a1a, 12px 36px 0 0 #209cee, 16px 36px 0 0 #209cee, 20px 36px 0 0 #209cee, 24px 36px 0 0 #209cee, 28px 36px 0 0 #209cee, 32px 36px 0 0 #209cee, 36px 36px 0 0 #209cee, 40px 36px 0 0 #1a1a1a,
-        12px 40px 0 0 #1a1a1a, 16px 40px 0 0 #1a1a1a, 20px 40px 0 0 #6b3a1f, 24px 40px 0 0 #1a1a1a, 28px 40px 0 0 #1a1a1a, 32px 40px 0 0 #6b3a1f, 36px 40px 0 0 #1a1a1a,
-        12px 44px 0 0 #1a1a1a, 16px 44px 0 0 #1a1a1a, 20px 44px 0 0 #6b3a1f, 24px 44px 0 0 #6b3a1f, 28px 44px 0 0 #6b3a1f, 32px 44px 0 0 #1a1a1a, 36px 44px 0 0 #1a1a1a,
-        12px 48px 0 0 #1a1a1a, 16px 48px 0 0 #1a1a1a, 20px 48px 0 0 #3d3d3d, 24px 48px 0 0 #3d3d3d, 28px 48px 0 0 #3d3d3d, 32px 48px 0 0 #1a1a1a, 36px 48px 0 0 #1a1a1a,
-        12px 52px 0 0 #1a1a1a, 16px 52px 0 0 #1a1a1a, 20px 52px 0 0 #3d3d3d, 24px 52px 0 0 #1a1a1a, 28px 52px 0 0 #3d3d3d, 32px 52px 0 0 #1a1a1a, 36px 52px 0 0 #1a1a1a;
-    }
-
-    .nes-container.is-dark {
-      background: #1a1a2e;
-      margin-bottom: 24px;
-    }
-
-    .nes-container .title {
-      background: #1a1a2e;
-      font-size: 0.7rem;
-    }
-
-    .nes-btn {
-      font-size: 0.65rem;
-    }
-
-    .nes-progress {
-      height: 24px;
-    }
-
-    .section-divider {
-      border-top: 4px dashed #444;
-      margin: 40px 0;
-    }
-
-    .project-card {
-      transition: transform 0.2s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .nes-badge {
-      font-size: 0.5rem;
-    }
-
     @media (max-width: 768px) {
-      .scanlines { opacity: 0.5; }
-      .nes-btn { font-size: 0.55rem; padding: 8px 16px; }
-      .hero-title { font-size: 1.2rem; }
-      .pixel-avatar { width: 48px; height: 48px; transform: scale(0.75); }
+      .hero-title { font-size: 24px; }
+      .section-title { font-size: 20px; }
+      .btn-primary { padding: 8px 16px; font-size: 12px; }
+      .btn-ghost { padding: 8px 12px; font-size: 12px; }
+      .social-icon { width: 36px; height: 36px; font-size: 14px; }
     }
 
     @media (max-width: 400px) {
-      .hero-title { font-size: 1rem; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation: none !important;
-      }
+      .hero-title { font-size: 20px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="starfield"></div>
-  <div class="scanlines"></div>
-
-  <div class="content">
-
-    <section class="min-h-screen flex items-center justify-center px-4 py-12">
-      <div class="max-w-4xl mx-auto w-full">
-
-        <div class="fade-in">
-          <h1 class="nes-text is-primary hero-title text-center" style="font-size: clamp(1.5rem, 6vw, 2.5rem);">RAJ NAIR</h1>
-          <p class="nes-text is-success text-center blink" style="font-size: clamp(0.5rem, 2vw, 0.7rem); margin-top: 16px;">BACKEND ENGINEER</p>
-        </div>
-
-        <div class="flex justify-center my-12 fade-in fade-in-d1">
-          <div class="flex items-end gap-6">
-            <div class="pixel-avatar float"></div>
-            <i class="nes-octocat animate" style="transform: scale(2);"></i>
-          </div>
-        </div>
-
-        <div class="nes-balloon from-left nes-pointer fade-in fade-in-d2" style="margin-bottom: 32px;">
-          <p style="font-size: clamp(0.5rem, 1.5vw, 0.65rem); line-height: 1.8;">I build things. Mostly backend stuff — APIs, tools, distributed systems. Learning as I go, one project at a time.</p>
-        </div>
-
-        <div class="nes-container is-dark with-title is-centered fade-in fade-in-d3">
-          <p class="title">ABOUT</p>
-          <p style="font-size: clamp(0.5rem, 1.5vw, 0.6rem); line-height: 2; margin-bottom: 16px;">
-            I build things. Python, Go, whatever gets the job done. I'm not an expert — just someone who likes making stuff and learning how things work along the way.
-          </p>
-          <p style="font-size: clamp(0.5rem, 1.5vw, 0.6rem); line-height: 2;">
-            Right now I'm focused on backend development: APIs, system tools, distributed systems. I pick projects that teach me something new, break things, fix them, and move on to the next. Based in Mumbai, India.
-          </p>
-        </div>
-
-        <div class="fade-in fade-in-d4" style="margin-top: 32px;">
-          <p style="font-size: 0.6rem; margin-bottom: 12px; color: #92cc41;">SKILL LEVELS</p>
-          <div style="margin-bottom: 16px;">
-            <span style="font-size: 0.55rem;">PYTHON</span>
-            <progress class="nes-progress is-primary" value="90" max="100"></progress>
-          </div>
-          <div style="margin-bottom: 16px;">
-            <span style="font-size: 0.55rem;">GO</span>
-            <progress class="nes-progress is-success" value="70" max="100"></progress>
-          </div>
-          <div style="margin-bottom: 16px;">
-            <span style="font-size: 0.55rem;">BACKEND</span>
-            <progress class="nes-progress is-warning" value="95" max="100"></progress>
-          </div>
-        </div>
-
-        <div class="flex flex-wrap justify-center gap-4 mt-8 fade-in fade-in-d5">
-          <a href="/projects.html" class="nes-btn is-primary" style="font-size: 0.65rem;">
-            QUEST LOG
-          </a>
-          <a href="mailto:nairraj311@gmail.com" class="nes-btn is-success" style="font-size: 0.65rem;">
-            SEND MESSAGE
-          </a>
-        </div>
-
+  <!-- NAV -->
+  <nav class="nav-bar">
+    <div class="max-w-7xl mx-auto w-full px-6 flex items-center justify-between">
+      <a href="/" style="color: var(--white);">Raj Nair</a>
+      <div class="flex items-center gap-8">
+        <a href="/projects.html" class="hidden sm:inline">Projects</a>
+        <a href="mailto:nairraj311@gmail.com" class="btn-primary text-sm" style="padding: 8px 16px;">
+          <i class="fa-regular fa-paper-plane" style="font-size: 12px;"></i> Reach Out
+        </a>
       </div>
-    </section>
+    </div>
+  </nav>
 
-    <section class="px-4 py-16">
-      <div class="max-w-5xl mx-auto">
-
-        <div class="flex items-center gap-4 mb-8 fade-in">
-          <i class="nes-icon trophy is-large"></i>
-          <h2 class="nes-text is-warning" style="font-size: clamp(0.8rem, 3vw, 1.2rem);">QUEST LOG</h2>
-          <i class="nes-icon star is-large float"></i>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-6">
-
-          <div class="project-card fade-in fade-in-d1">
-            <div class="nes-container is-dark with-title">
-              <p class="title">gopswatch</p>
-              <p style="font-size: 0.55rem; line-height: 2; margin-bottom: 16px;">
-                Lightweight Linux resource monitor that reads metrics directly from /proc. No external dependencies.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <a class="nes-badge is-split">
-                  <span class="is-dark">Go</span>
-                  <span class="is-success">Linux</span>
-                </a>
-                <a class="nes-badge is-split">
-                  <span class="is-dark">procfs</span>
-                  <span class="is-primary">CLI</span>
-                </a>
-              </div>
-              <a href="https://github.com/RajNair06/gopswatch" target="_blank" rel="noopener" class="nes-btn is-primary" style="font-size: 0.5rem;">GITHUB</a>
-            </div>
-          </div>
-
-          <div class="project-card fade-in fade-in-d2">
-            <div class="nes-container is-dark with-title">
-              <p class="title">Load Balancer</p>
-              <p style="font-size: 0.55rem; line-height: 2; margin-bottom: 16px;">
-                HTTP load balancer with round-robin, least-connections, consistent hashing, health checks, circuit breaker, and real-time WebSocket dashboard.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <a class="nes-badge is-split">
-                  <span class="is-dark">Go</span>
-                  <span class="is-primary">WebSocket</span>
-                </a>
-              </div>
-              <a href="https://github.com/RajNair06/load_balancer" target="_blank" rel="noopener" class="nes-btn is-primary" style="font-size: 0.5rem;">GITHUB</a>
-            </div>
-          </div>
-
-          <div class="project-card fade-in fade-in-d3">
-            <div class="nes-container is-dark with-title">
-              <p class="title">Wallet Payment Backend</p>
-              <p style="font-size: 0.55rem; line-height: 2; margin-bottom: 16px;">
-                Production-grade digital wallet API with double-entry ledger accounting and idempotent transaction processing.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <a class="nes-badge is-split">
-                  <span class="is-dark">FastAPI</span>
-                  <span class="is-success">SQLModel</span>
-                </a>
-                <a class="nes-badge is-split">
-                  <span class="is-dark">PostgreSQL</span>
-                  <span class="is-warning">Redis</span>
-                </a>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <a href="https://github.com/RajNair06/wallet" target="_blank" rel="noopener" class="nes-btn is-primary" style="font-size: 0.5rem;">GITHUB</a>
-                <a href="https://wallet-tv64.onrender.com" target="_blank" rel="noopener" class="nes-btn is-success" style="font-size: 0.5rem;">LIVE DEMO</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card fade-in fade-in-d4">
-            <div class="nes-container is-dark with-title">
-              <p class="title">Vigil — IDS</p>
-              <p style="font-size: 0.55rem; line-height: 2; margin-bottom: 16px;">
-                Real-time log ingestion and two-stage attack detection pipeline with observability.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <a class="nes-badge is-split">
-                  <span class="is-dark">FastAPI</span>
-                  <span class="is-error">SQLAlchemy</span>
-                </a>
-                <a class="nes-badge is-split">
-                  <span class="is-dark">PostgreSQL</span>
-                  <span class="is-primary">Prometheus</span>
-                </a>
-              </div>
-              <a href="https://github.com/RajNair06/vigil" target="_blank" rel="noopener" class="nes-btn is-primary" style="font-size: 0.5rem;">GITHUB</a>
-            </div>
-          </div>
-
-          <div class="project-card fade-in fade-in-d5">
-            <div class="nes-container is-dark with-title">
-              <p class="title">TradeForge</p>
-              <p style="font-size: 0.55rem; line-height: 2; margin-bottom: 16px;">
-                Technical analysis platform and API with real-time stock data, SMA indicators, and interactive Chart.js visualizations.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <a class="nes-badge is-split">
-                  <span class="is-dark">FastAPI</span>
-                  <span class="is-warning">Redis</span>
-                </a>
-                <a class="nes-badge is-split">
-                  <span class="is-dark">yfinance</span>
-                  <span class="is-primary">Chart.js</span>
-                </a>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <a href="https://github.com/RajNair06/tradeforge_web" target="_blank" rel="noopener" class="nes-btn is-primary" style="font-size: 0.5rem;">GITHUB</a>
-                <a href="https://tradeforgeweb-production.up.railway.app/" target="_blank" rel="noopener" class="nes-btn is-success" style="font-size: 0.5rem;">LIVE DEMO</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card fade-in fade-in-d6">
-            <div class="nes-container is-dark with-title">
-              <p class="title">Collaborative Task Board</p>
-              <p style="font-size: 0.55rem; line-height: 2; margin-bottom: 16px;">
-                Trello-like backend with real-time collaboration via WebSockets and Redis pub/sub.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <a class="nes-badge is-split">
-                  <span class="is-dark">FastAPI</span>
-                  <span class="is-success">WebSockets</span>
-                </a>
-                <a class="nes-badge is-split">
-                  <span class="is-dark">Redis</span>
-                  <span class="is-warning">Celery</span>
-                </a>
-              </div>
-              <a href="https://github.com/RajNair06/task_board" target="_blank" rel="noopener" class="nes-btn is-primary" style="font-size: 0.5rem;">GITHUB</a>
-            </div>
-          </div>
-
-          <div class="project-card fade-in fade-in-d7">
-            <div class="nes-container is-dark with-title">
-              <p class="title">LearnFlow Backend</p>
-              <p style="font-size: 0.55rem; line-height: 2; margin-bottom: 16px;">
-                Goal-tracking platform with tier-based rate limiting, Redis caching, and Celery-scheduled reminders.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <a class="nes-badge is-split">
-                  <span class="is-dark">Django</span>
-                  <span class="is-primary">DRF</span>
-                </a>
-                <a class="nes-badge is-split">
-                  <span class="is-dark">PostgreSQL</span>
-                  <span class="is-warning">Docker</span>
-                </a>
-              </div>
-              <a href="https://github.com/RajNair06/learnflow_backend" target="_blank" rel="noopener" class="nes-btn is-primary" style="font-size: 0.5rem;">GITHUB</a>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="flex justify-center mt-12 fade-in">
-          <a href="/projects.html" class="nes-btn is-warning" style="font-size: 0.65rem;">
-            SEE ALL QUESTS →
-          </a>
-        </div>
-
+  <!-- HERO -->
+  <section class="max-w-7xl mx-auto px-6 pt-16 pb-12">
+    <div class="max-w-2xl">
+      <p class="hero-label mb-4 fade-in fd1">BACKEND ENGINEER</p>
+      <h1 class="hero-title mb-4 fade-in fd2">
+        Raj Nair<span class="cursor-blink"></span>
+      </h1>
+      <p class="text-body mt-4 fade-in fd3" style="max-width: 560px;">
+        I build things. Mostly backend stuff — APIs, tools, distributed systems. Learning as I go, one project at a time.
+      </p>
+      <div class="flex flex-wrap items-center gap-3 mt-8 fade-in fd4">
+        <a href="/projects.html" class="btn-ghost">
+          <i class="fa-solid fa-folder-open" style="font-size: 12px;"></i> Projects
+        </a>
+        <a href="mailto:nairraj311@gmail.com" class="btn-ghost">
+          <i class="fa-regular fa-envelope" style="font-size: 12px;"></i> Contact
+        </a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="px-4 py-16">
-      <div class="max-w-4xl mx-auto">
-        <div class="section-divider"></div>
-
-        <div class="flex items-center gap-4 mb-8 fade-in">
-          <i class="nes-icon heart is-large"></i>
-          <h2 class="nes-text is-error" style="font-size: clamp(0.8rem, 3vw, 1.2rem);">CONNECT</h2>
-        </div>
-
-        <div class="flex flex-wrap justify-center gap-6 fade-in fade-in-d1">
-          <a href="mailto:nairraj311@gmail.com" aria-label="Email">
-            <i class="nes-icon gmail is-large"></i>
-          </a>
-          <a href="https://linkedin.com/in/raj-n06" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <i class="nes-icon linkedin is-large"></i>
-          </a>
-          <a href="https://github.com/RajNair06" target="_blank" rel="noopener" aria-label="GitHub">
-            <i class="nes-icon github is-large"></i>
-          </a>
-          <a href="https://x.com/RajNair06" target="_blank" rel="noopener" aria-label="Twitter">
-            <i class="nes-icon twitter is-large"></i>
-          </a>
-        </div>
-
-        <div class="flex justify-center items-center gap-4 mt-8 fade-in fade-in-d2">
-          <i class="nes-ash"></i>
-          <i class="nes-pokeball"></i>
-          <p class="nes-text is-disabled" style="font-size: 0.5rem;">Mumbai, India</p>
-          <i class="nes-pokeball"></i>
-          <i class="nes-ash"></i>
-        </div>
-      </div>
-    </section>
-
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="divider"></div>
   </div>
 
-  <script>
-    const konamiCode = [38,38,40,40,37,39,37,39,66,65];
-    let konamiIndex = 0;
-    document.addEventListener('keydown', (e) => {
-      if (e.keyCode === konamiCode[konamiIndex]) {
-        konamiIndex++;
-        if (konamiIndex === konamiCode.length) {
-          konamiIndex = 0;
-          document.body.style.transition = 'filter 0.5s';
-          document.body.style.filter = 'hue-rotate(180deg)';
-          setTimeout(() => { document.body.style.filter = 'none'; }, 2000);
-        }
-      } else {
-        konamiIndex = 0;
-      }
-    });
-  </script>
+  <!-- ABOUT -->
+  <section class="max-w-7xl mx-auto px-6 py-12">
+    <div class="max-w-3xl fade-in fd5">
+      <p class="section-label">About</p>
+      <div class="card">
+        <p class="text-body mb-4">
+          I build things. Python, Go, whatever gets the job done. I'm not an expert — just someone who likes making stuff and learning how things work along the way.
+        </p>
+        <p class="text-body mb-6">
+          Right now I'm focused on backend development: APIs, system tools, distributed systems. I pick projects that teach me something new, break things, fix them, and move on to the next. Based in Mumbai, India.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="text-caption" style="color: var(--steel);">PYTHON</span>
+              <span class="text-caption" style="color: var(--hl);">90%</span>
+            </div>
+            <div class="stat-bar-track">
+              <div class="stat-bar-fill" style="width: 90%;"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="text-caption" style="color: var(--steel);">GO</span>
+              <span class="text-caption" style="color: var(--hl);">70%</span>
+            </div>
+            <div class="stat-bar-track">
+              <div class="stat-bar-fill" style="width: 70%;"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="text-caption" style="color: var(--steel);">BACKEND</span>
+              <span class="text-caption" style="color: var(--hl);">95%</span>
+            </div>
+            <div class="stat-bar-track">
+              <div class="stat-bar-fill" style="width: 95%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="divider"></div>
+  </div>
+
+  <!-- FEATURED PROJECTS -->
+  <section class="max-w-7xl mx-auto px-6 py-12">
+    <div class="flex items-center justify-between mb-8 fade-in fd6">
+      <div>
+        <p class="section-label">Featured</p>
+        <h2 class="section-title">Projects</h2>
+      </div>
+      <a href="/projects.html" class="btn-ghost btn-ghost-sm">
+        View all <i class="fa-solid fa-arrow-right" style="font-size: 10px;"></i>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <!-- gopswatch -->
+      <div class="card project-card fade-in fd5">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-caption" style="color: var(--ash);">01</span>
+          <span class="pill pill-accent">Go</span>
+        </div>
+        <h3 class="project-title mb-2">gopswatch</h3>
+        <p class="project-desc mb-4">Lightweight Linux resource monitor reading metrics directly from /proc. No external dependencies.</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="pill">Linux</span>
+          <span class="pill">procfs</span>
+        </div>
+        <a href="https://github.com/RajNair06/gopswatch" target="_blank" rel="noopener" class="btn-ghost btn-ghost-sm">
+          <i class="fa-brands fa-github" style="font-size: 12px;"></i> GitHub
+        </a>
+      </div>
+
+      <!-- Load Balancer -->
+      <div class="card project-card fade-in fd6">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-caption" style="color: var(--ash);">02</span>
+          <span class="pill pill-accent">Go</span>
+        </div>
+        <h3 class="project-title mb-2">Load Balancer</h3>
+        <p class="project-desc mb-4">HTTP load balancer with round-robin, least-connections, consistent hashing, health checks, circuit breaker, and WebSocket dashboard.</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="pill">WebSocket</span>
+        </div>
+        <a href="https://github.com/RajNair06/load_balancer" target="_blank" rel="noopener" class="btn-ghost btn-ghost-sm">
+          <i class="fa-brands fa-github" style="font-size: 12px;"></i> GitHub
+        </a>
+      </div>
+
+      <!-- Wallet -->
+      <div class="card project-card fade-in fd7">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-caption" style="color: var(--ash);">03</span>
+          <span class="pill pill-accent">Python</span>
+        </div>
+        <h3 class="project-title mb-2">Wallet Payment Backend</h3>
+        <p class="project-desc mb-4">Production-grade digital wallet API with double-entry ledger accounting and idempotent transactions.</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="pill">FastAPI</span>
+          <span class="pill">PostgreSQL</span>
+          <span class="pill">Redis</span>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a href="https://github.com/RajNair06/wallet" target="_blank" rel="noopener" class="btn-ghost btn-ghost-sm">
+            <i class="fa-brands fa-github" style="font-size: 12px;"></i> GitHub
+          </a>
+          <a href="https://wallet-tv64.onrender.com" target="_blank" rel="noopener" class="btn-ghost btn-ghost-sm">
+            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 10px;"></i> Live
+          </a>
+        </div>
+      </div>
+
+      <!-- Vigil -->
+      <div class="card project-card fade-in fd7">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-caption" style="color: var(--ash);">04</span>
+          <span class="pill pill-accent">Python</span>
+        </div>
+        <h3 class="project-title mb-2">Vigil — IDS</h3>
+        <p class="project-desc mb-4">Real-time log ingestion and two-stage attack detection pipeline with observability.</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="pill">FastAPI</span>
+          <span class="pill">SQLAlchemy</span>
+          <span class="pill">Prometheus</span>
+        </div>
+        <a href="https://github.com/RajNair06/vigil" target="_blank" rel="noopener" class="btn-ghost btn-ghost-sm">
+          <i class="fa-brands fa-github" style="font-size: 12px;"></i> GitHub
+        </a>
+      </div>
+
+      <!-- TradeForge -->
+      <div class="card project-card fade-in fd8">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-caption" style="color: var(--ash);">05</span>
+          <span class="pill pill-accent">Python</span>
+        </div>
+        <h3 class="project-title mb-2">TradeForge</h3>
+        <p class="project-desc mb-4">Technical analysis platform with real-time stock data, SMA indicators, and Chart.js visualizations.</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="pill">FastAPI</span>
+          <span class="pill">Redis</span>
+          <span class="pill">Chart.js</span>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a href="https://github.com/RajNair06/tradeforge_web" target="_blank" rel="noopener" class="btn-ghost btn-ghost-sm">
+            <i class="fa-brands fa-github" style="font-size: 12px;"></i> GitHub
+          </a>
+          <a href="https://tradeforgeweb-production.up.railway.app/" target="_blank" rel="noopener" class="btn-ghost btn-ghost-sm">
+            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 10px;"></i> Live
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="divider"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="max-w-7xl mx-auto px-6 py-12">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8 fade-in fd9">
+      <div>
+        <p class="section-label mb-4">Connect</p>
+        <div class="flex items-center gap-3">
+          <a href="mailto:nairraj311@gmail.com" class="social-icon" aria-label="Email">
+            <i class="fa-regular fa-envelope"></i>
+          </a>
+          <a href="https://linkedin.com/in/raj-n06" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/RajNair06" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://x.com/RajNair06" target="_blank" rel="noopener" class="social-icon" aria-label="X">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+        </div>
+      </div>
+      <div class="text-caption">
+        <p>Mumbai, India</p>
+        <p style="margin-top: 4px;">© Raj Nair</p>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>

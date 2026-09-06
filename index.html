@@ -1,565 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Raj Nair</title>
-  <meta name="description" content="Raj Nair — I build things. Focused on backend, learning by doing. Python, Go, distributed systems.">
-  <meta name="keywords" content="Raj Nair, backend developer, Python, Go, FastAPI, Django, Mumbai">
-  <meta name="author" content="Raj Nair">
-  <link rel="canonical" href="https://rajnair06.github.io/">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <meta property="og:title" content="Raj Nair">
-  <meta property="og:description" content="Raj Nair — I build things. Focused on backend, learning by doing. Python, Go, distributed systems.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://rajnair06.github.io/">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Raj Nair">
-  <meta name="twitter:description" content="Raj Nair — I build things. Focused on backend, learning by doing. Python, Go, distributed systems.">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Tomorrow:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --hl: #faff00;
-      --onyx: #0a0a0a;
-      --zinc: #27272a;
-      --carbon: #18181b;
-      --white: #ffffff;
-      --steel: #9d9d9d;
-      --ash: #6c6c6c;
-      --smoke: #3b3b3b;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raj Nair</title>
+<meta name="description" content="Raj Nair — Backend engineer building APIs, distributed systems, and real-time backends. Python, Go, PostgreSQL.">
+<meta name="keywords" content="Raj Nair, backend engineer, Python, Go, FastAPI, Django, API developer, Mumbai">
+<meta name="author" content="Raj Nair">
+<link rel="canonical" href="https://rajnair06.github.io/">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:title" content="Raj Nair">
+<meta property="og:description" content="Backend engineer building APIs, distributed systems, and real-time backends. Python, Go, PostgreSQL.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rajnair06.github.io/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Raj Nair">
+<meta name="twitter:description" content="Backend engineer building APIs, distributed systems, and real-time backends. Python, Go, PostgreSQL.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-deep:#14152b;
+  --bg-panel:#1e2044;
+  --bg-panel-2:#262a52;
+  --outline:#0a0a16;
+  --text:#eae8f5;
+  --text-dim:#9a97c2;
+  --amber:#f2a541;
+  --cyan:#4fd1c5;
+  --rose:#e0507a;
+  --font-display:'Press Start 2P',monospace;
+  --font-body:'VT323',monospace;
+  --px:4px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;cursor:url('closed_pokeball.png') 8 8, auto}
+body{
+  background:var(--bg-deep);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:20px;
+  line-height:1.5;
+  overflow-x:hidden;
+  cursor:url('closed_pokeball.png') 8 8, auto;
+}
+a{color:var(--cyan);text-decoration:none;cursor:url('open_pokeball.png') 8 8, pointer}
+::selection{background:var(--amber);color:var(--outline)}
+::-webkit-scrollbar{width:14px}
+::-webkit-scrollbar-track{background:var(--bg-deep)}
+::-webkit-scrollbar-thumb{background:var(--bg-panel-2);border:3px solid var(--bg-deep)}
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+.crt-overlay{
+  position:fixed;inset:0;
+  pointer-events:none;z-index:999;
+  background:repeating-linear-gradient(to bottom,rgba(0,0,0,0.12) 0px,rgba(0,0,0,0.12) 1px,transparent 1px,transparent 3px);
+  mix-blend-mode:multiply;opacity:0.5;
+}
+@media (prefers-reduced-motion:no-preference){.crt-overlay{animation:flicker 6s infinite}}
+@keyframes flicker{0%,96%,100%{opacity:0.5}97%{opacity:0.35}}
 
-    body {
-      font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      background: var(--onyx);
-      color: var(--white);
-      -webkit-font-smoothing: antialiased;
-    }
+.pixel-panel{
+  position:relative;
+  background:var(--bg-panel);
+  border:var(--px) solid var(--outline);
+  box-shadow:0 var(--px) 0 0 var(--outline),0 calc(var(--px) * -1) 0 0 var(--outline),var(--px) 0 0 0 var(--outline),calc(var(--px) * -1) 0 0 var(--outline),0 0 0 var(--px) var(--bg-panel-2) inset,0 6px 0 0 rgba(0,0,0,0.35);
+  padding:2rem;
+}
+.pixel-panel::before,.pixel-panel::after{
+  content:"";position:absolute;
+  width:var(--px);height:var(--px);
+  background:var(--bg-deep);
+}
+.pixel-panel::before{top:calc(var(--px) * -1);left:calc(var(--px) * -1);box-shadow:calc(100% - var(--px)) 0 0 var(--bg-deep)}
+.pixel-panel::after{bottom:calc(var(--px) * -1);left:calc(var(--px) * -1);box-shadow:calc(100% - var(--px)) 0 0 var(--bg-deep)}
 
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--onyx); }
-    ::-webkit-scrollbar-thumb { background: var(--smoke); }
+.pixel-btn{
+  display:inline-block;
+  font-family:var(--font-display);
+  font-size:0.7rem;
+  color:var(--outline);
+  background:var(--amber);
+  padding:0.9rem 1.4rem;
+  border:none;
+  box-shadow:var(--px) var(--px) 0 0 var(--outline),inset calc(var(--px) * -1) calc(var(--px) * -1) 0 0 rgba(0,0,0,0.25);
+  cursor:url('open_pokeball.png') 8 8, pointer;
+  transition:transform .05s linear,box-shadow .05s linear;
+}
+.pixel-btn:hover{background:#ffb85c}
+.pixel-btn:active{transform:translate(var(--px),var(--px));box-shadow:none}
+.pixel-btn.ghost{
+  background:transparent;color:var(--cyan);
+  box-shadow:var(--px) var(--px) 0 0 var(--outline),0 0 0 var(--px) var(--cyan) inset;
+}
+.pixel-btn.ghost:hover{color:var(--amber);box-shadow:var(--px) var(--px) 0 0 var(--outline),0 0 0 var(--px) var(--amber) inset}
 
-    .font-heading {
-      font-family: 'Tomorrow', ui-sans-serif, system-ui, sans-serif;
-    }
+.hud{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;padding:1rem 2rem;
+  background:var(--bg-panel);
+  border-bottom:var(--px) solid var(--outline);
+}
+.hud__logo{font-family:var(--font-display);font-size:0.85rem;color:var(--amber);white-space:nowrap}
+.hud__logo span{color:var(--cyan)}
+.hud__links{display:flex;gap:1.5rem;list-style:none;font-family:var(--font-display);font-size:0.65rem}
+.hud__links a{color:var(--text);padding:0.4rem 0;border-bottom:3px solid transparent}
+.hud__links a:hover{color:var(--amber);border-bottom-color:var(--amber)}
+.hud__toggle{display:none;font-family:var(--font-display);background:none;border:var(--px) solid var(--outline);color:var(--text);padding:0.5rem 0.7rem;cursor:pointer}
 
-    .nav-bar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--onyx);
-      border-bottom: 1px solid var(--zinc);
-      height: 56px;
-      display: flex;
-      align-items: center;
-    }
+.wrap{max-width:1100px;margin:0 auto;padding:0 2rem}
+section{padding:6rem 0}
 
-    .nav-bar a {
-      color: var(--steel);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 0.15s;
-    }
+.section-label{font-family:var(--font-display);font-size:0.7rem;color:var(--cyan);margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem}
+.section-label::before{content:"▶";color:var(--amber)}
+.section-title{font-family:var(--font-display);font-size:1.6rem;line-height:1.6;margin-bottom:2.5rem;max-width:20ch}
 
-    .nav-bar a:hover {
-      color: var(--hl);
-    }
+.hero{min-height:calc(100vh - 70px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:1.5rem}
+.hero__eyebrow{font-family:var(--font-display);font-size:0.7rem;color:var(--rose)}
+.hero__title{font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.7;text-shadow:4px 4px 0 var(--outline)}
+.hero__title .accent{color:var(--amber)}
+.hero__subtitle{font-size:1.4rem;color:var(--text-dim);max-width:52ch}
+.hero__actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem}
+.hero__prompt{margin-top:2.5rem;font-family:var(--font-display);font-size:0.7rem;color:var(--text-dim)}
+.cursor{display:inline-block;width:0.7rem;height:1em;background:var(--amber);margin-left:4px;vertical-align:middle;animation:blink 1s steps(1) infinite}
+@media (prefers-reduced-motion:reduce){.cursor{animation:none}}
+@keyframes blink{50%{opacity:0}}
 
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--hl);
-      color: #000;
-      border: none;
-      border-radius: 9999px;
-      padding: 10px 20px;
-      font-family: 'Geist Mono', monospace;
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      cursor: pointer;
-      transition: opacity 0.15s;
-    }
+.stats-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:2.5rem;align-items:start}
+.stats-grid p + p{margin-top:1rem}
+.stats-grid .lead{font-size:1.35rem;color:var(--text-dim)}
+.stat-list{list-style:none;display:flex;flex-direction:column;gap:1.1rem}
+.stat-row{display:flex;flex-direction:column;gap:0.4rem}
+.stat-row__label{display:flex;justify-content:space-between;font-family:var(--font-display);font-size:0.6rem;color:var(--text-dim)}
+.stat-row__bar{height:14px;background:var(--bg-deep);border:3px solid var(--outline);padding:2px}
+.stat-row__fill{height:100%;background:linear-gradient(90deg,var(--cyan),var(--amber))}
 
-    .btn-primary:hover {
-      opacity: 0.85;
-    }
+.quest-list{display:flex;flex-direction:column;gap:1.5rem}
+.quest{display:grid;grid-template-columns:auto 1fr auto;gap:1.5rem;align-items:center;padding:1.5rem}
+.quest__status{font-family:var(--font-display);font-size:0.55rem;padding:0.5rem 0.7rem;white-space:nowrap;border:3px solid var(--outline)}
+.quest__status.done{background:var(--cyan);color:var(--outline)}
+.quest__status.active{background:var(--amber);color:var(--outline)}
+.quest__title{font-family:var(--font-display);font-size:0.85rem;margin-bottom:0.6rem}
+.quest__desc{color:var(--text-dim);font-size:1.15rem;max-width:60ch}
+.quest__stack{margin-top:0.75rem;font-family:var(--font-display);font-size:0.5rem;color:var(--rose);letter-spacing:0.05em}
+.quest__link{font-family:var(--font-display);font-size:0.6rem;white-space:nowrap;padding:0.5rem 0.6rem}
 
-    .btn-primary:active {
-      opacity: 0.7;
-    }
+@media (max-width:640px){.quest{grid-template-columns:1fr}}
 
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: var(--white);
-      border: 1px solid var(--zinc);
-      border-radius: 6px;
-      padding: 10px 16px;
-      font-family: 'Geist Mono', monospace;
-      font-size: 14px;
-      font-weight: 400;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.15s;
-    }
+.save-point{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+.save-point__links{display:flex;flex-direction:column;gap:1rem}
+.save-point__link{font-size:1.3rem;display:flex;justify-content:space-between;border-bottom:2px dotted var(--bg-panel-2);padding-bottom:0.5rem}
+.save-point__link span{font-family:var(--font-display);font-size:0.55rem;color:var(--text-dim)}
 
-    .btn-ghost:hover {
-      background: var(--carbon);
-      border-color: var(--smoke);
-    }
+@media (max-width:800px){.stats-grid,.save-point{grid-template-columns:1fr}}
 
-    .btn-ghost:active {
-      background: var(--zinc);
-    }
+footer{padding:3rem 0;text-align:center;font-family:var(--font-display);font-size:0.6rem;color:var(--text-dim)}
 
-    .btn-ghost-sm {
-      padding: 6px 12px;
-      font-size: 12px;
-    }
+@media (max-width:760px){
+  .hud__links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--bg-panel);border-bottom:var(--px) solid var(--outline);padding:1rem 2rem}
+  .hud__links.is-open{display:flex}
+  .hud__links a{padding:0.8rem 0}
+  .hud__toggle{display:block}
+}
 
-    .card {
-      background: var(--onyx);
-      border: 1px solid var(--zinc);
-      border-radius: 12px;
-      padding: 16px;
-    }
-
-    .pill {
-      display: inline-block;
-      padding: 4px 10px;
-      font-size: 10px;
-      font-weight: 500;
-      border: 1px solid var(--zinc);
-      border-radius: 9999px;
-      color: var(--steel);
-      background: transparent;
-      text-decoration: none;
-    }
-
-    .pill-accent {
-      background: var(--hl);
-      color: #000;
-      border-color: var(--hl);
-    }
-
-    .hero-title {
-      font-family: 'Tomorrow', sans-serif;
-      font-size: 28px;
-      font-weight: 500;
-      line-height: 1.17;
-      color: var(--white);
-    }
-
-    .hero-label {
-      font-size: 10px;
-      font-weight: 500;
-      color: var(--hl);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .section-title {
-      font-family: 'Tomorrow', sans-serif;
-      font-size: 24px;
-      font-weight: 400;
-      line-height: 1.29;
-      color: var(--white);
-    }
-
-    .section-label {
-      font-size: 10px;
-      font-weight: 500;
-      color: var(--steel);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .text-body {
-      font-size: 14px;
-      line-height: 1.43;
-      color: var(--steel);
-    }
-
-    .text-caption {
-      font-size: 10px;
-      color: var(--ash);
-    }
-
-    .cursor-blink {
-      display: inline-block;
-      width: 2px;
-      height: 1em;
-      background: var(--hl);
-      margin-left: 4px;
-      vertical-align: text-bottom;
-      animation: blink 1s steps(1) infinite;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-
-    .typewriter {
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: none;
-      animation: typing 2.5s steps(60) forwards;
-      max-width: 0;
-    }
-
-    @keyframes typing {
-      from { max-width: 0; }
-      to { max-width: 100%; }
-    }
-
-    .stat-bar-track {
-      width: 100%;
-      height: 4px;
-      background: var(--zinc);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .stat-bar-fill {
-      height: 100%;
-      background: var(--hl);
-      border-radius: 2px;
-      transition: width 0.8s ease;
-    }
-
-    .social-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border: 1px solid var(--zinc);
-      border-radius: 6px;
-      color: var(--steel);
-      font-size: 16px;
-      text-decoration: none;
-      transition: all 0.15s;
-    }
-
-    .social-icon:hover {
-      color: var(--hl);
-      border-color: var(--hl);
-      background: rgba(250, 255, 0, 0.05);
-    }
-
-    .project-card {
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-2px);
-      border-color: var(--smoke);
-    }
-
-    .project-card:hover .project-title {
-      color: var(--hl);
-    }
-
-    .project-title {
-      font-family: 'Tomorrow', sans-serif;
-      font-size: 18px;
-      font-weight: 400;
-      color: var(--white);
-      line-height: 1.4;
-      transition: color 0.15s;
-    }
-
-    .project-desc {
-      font-size: 14px;
-      line-height: 1.43;
-      color: var(--steel);
-    }
-
-    .divider {
-      border-top: 1px solid var(--zinc);
-      margin: 32px 0;
-    }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(12px);
-      animation: fadeIn 0.6s ease forwards;
-    }
-
-    .fd1 { animation-delay: 0.1s; }
-    .fd2 { animation-delay: 0.2s; }
-    .fd3 { animation-delay: 0.3s; }
-    .fd4 { animation-delay: 0.4s; }
-    .fd5 { animation-delay: 0.5s; }
-    .fd6 { animation-delay: 0.6s; }
-    .fd7 { animation-delay: 0.7s; }
-    .fd8 { animation-delay: 0.8s; }
-    .fd9 { animation-delay: 0.9s; }
-
-    @keyframes fadeIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 768px) {
-      .hero-title { font-size: 24px; }
-      .section-title { font-size: 20px; }
-      .btn-primary { padding: 8px 16px; font-size: 12px; }
-      .btn-ghost { padding: 8px 12px; font-size: 12px; }
-      .social-icon { width: 36px; height: 36px; font-size: 14px; }
-    }
-
-    @media (max-width: 400px) {
-      .hero-title { font-size: 20px; }
-    }
-  </style>
+a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav-bar">
-    <div class="max-w-7xl mx-auto w-full px-6 flex items-center justify-between">
-      <a href="/" style="color: var(--white);">Raj Nair</a>
-      <div class="flex items-center gap-8">
-        <a href="/projects.html" class="hidden sm:inline">Projects</a>
-        <a href="mailto:nairraj311@gmail.com" class="btn-primary text-sm" style="padding: 8px 16px;">
-          <i class="fa-regular fa-paper-plane" style="font-size: 12px;"></i> Reach Out
-        </a>
-      </div>
-    </div>
-  </nav>
+<div class="crt-overlay"></div>
 
-  <!-- HERO -->
-  <section class="max-w-7xl mx-auto px-6 pt-16 pb-12">
-    <div class="max-w-2xl">
-      <p class="hero-label mb-4 fade-in fd1">BACKEND ENGINEER</p>
-      <h1 class="hero-title mb-4 fade-in fd2">
-        Raj Nair<span class="cursor-blink"></span>
-      </h1>
-      <p class="text-body mt-4 fade-in fd3" style="max-width: 560px;">
-        I build things. Mostly backend stuff — APIs, tools, distributed systems. Learning as I go, one project at a time.
-      </p>
-      <div class="flex flex-wrap items-center gap-3 mt-8 fade-in fd4">
-        <a href="/projects.html" class="btn-ghost">
-          <i class="fa-solid fa-folder-open" style="font-size: 12px;"></i> Projects
-        </a>
-        <a href="mailto:nairraj311@gmail.com" class="btn-ghost">
-          <i class="fa-regular fa-envelope" style="font-size: 12px;"></i> Contact
-        </a>
-      </div>
+<header class="hud">
+  <div class="hud__logo">RAJ NAIR</div>
+  <button class="hud__toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+  <ul class="hud__links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contacts</a></li>
+  </ul>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" id="top">
+    <h1 class="hero__title">Hi, I'm <span class="accent">Raj Nair</span><br>I build backend systems<br>that actually work<span class="cursor"></span></h1>
+    <p class="hero__subtitle">Python & Go developer focused on APIs, distributed systems, and the kind of reliability that keeps things running in production.</p>
+    <div class="hero__actions">
+      <a href="#projects" class="pixel-btn">PROJECTS</a>
+      <a href="#contact" class="pixel-btn ghost">CONTACT</a>
     </div>
   </section>
 
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="divider"></div>
-  </div>
-
-  <!-- ABOUT -->
-  <section class="max-w-7xl mx-auto px-6 py-12">
-    <div class="max-w-3xl fade-in fd5">
-      <p class="section-label">About</p>
-      <div class="card">
-        <p class="text-body mb-4">
-          I build things. Python, Go, whatever gets the job done. I'm not an expert — just someone who likes making stuff and learning how things work along the way.
-        </p>
-        <p class="text-body mb-6">
-          Right now I'm focused on backend development: APIs, system tools, distributed systems. I pick projects that teach me something new, break things, fix them, and move on to the next. Based in Mumbai, India.
-        </p>
-
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <div>
-            <div class="flex justify-between mb-2">
-              <span class="text-caption" style="color: var(--steel);">PYTHON</span>
-              <span class="text-caption" style="color: var(--hl);">90%</span>
-            </div>
-            <div class="stat-bar-track">
-              <div class="stat-bar-fill" style="width: 90%;"></div>
-            </div>
-          </div>
-          <div>
-            <div class="flex justify-between mb-2">
-              <span class="text-caption" style="color: var(--steel);">GO</span>
-              <span class="text-caption" style="color: var(--hl);">70%</span>
-            </div>
-            <div class="stat-bar-track">
-              <div class="stat-bar-fill" style="width: 70%;"></div>
-            </div>
-          </div>
-          <div>
-            <div class="flex justify-between mb-2">
-              <span class="text-caption" style="color: var(--steel);">BACKEND</span>
-              <span class="text-caption" style="color: var(--hl);">95%</span>
-            </div>
-            <div class="stat-bar-track">
-              <div class="stat-bar-fill" style="width: 95%;"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="divider"></div>
-  </div>
-
-  <!-- FEATURED PROJECTS -->
-  <section class="max-w-7xl mx-auto px-6 py-12">
-    <div class="flex items-center justify-between mb-8 fade-in fd6">
+  <section id="about">
+    <div class="section-label">PLAYER STATS</div>
+    <h2 class="section-title">Character sheet</h2>
+    <div class="stats-grid pixel-panel">
       <div>
-        <p class="section-label">Featured</p>
-        <h2 class="section-title">Projects</h2>
+        <p class="lead">I build things. Python, Go, whatever gets the job done. I'm not an expert — just someone who likes making stuff and learning how things work along the way.</p>
+        <p>Right now I'm focused on backend development: APIs, system tools, distributed systems. I pick projects that teach me something new, break things, fix them, and move on to the next. Based in Mumbai, India.</p>
       </div>
-      <a href="/projects.html" class="btn-ghost btn-ghost-sm">
-        View all <i class="fa-solid fa-arrow-right" style="font-size: 10px;"></i>
-      </a>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-
-      <!-- gopswatch -->
-      <div class="card project-card fade-in fd5">
-        <div class="flex items-center justify-between mb-3">
-          <span class="text-caption" style="color: var(--ash);">01</span>
-          <span class="pill pill-accent">Go</span>
-        </div>
-        <h3 class="project-title mb-2">gopswatch</h3>
-        <p class="project-desc mb-4">Lightweight Linux resource monitor reading metrics directly from /proc. No external dependencies.</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="pill">Linux</span>
-          <span class="pill">procfs</span>
-        </div>
-        <a href="https://github.com/RajNair06/gopswatch" target="_blank" rel="noopener" class="btn-ghost btn-ghost-sm">
-          <i class="fa-brands fa-github" style="font-size: 12px;"></i> GitHub
-        </a>
-      </div>
-
-      <!-- Load Balancer -->
-      <div class="card project-card fade-in fd6">
-        <div class="flex items-center justify-between mb-3">
-          <span class="text-caption" style="color: var(--ash);">02</span>
-          <span class="pill pill-accent">Go</span>
-        </div>
-        <h3 class="project-title mb-2">Load Balancer</h3>
-        <p class="project-desc mb-4">HTTP load balancer with round-robin, least-connections, consistent hashing, health checks, circuit breaker, and WebSocket dashboard.</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="pill">WebSocket</span>
-        </div>
-        <a href="https://github.com/RajNair06/load_balancer" target="_blank" rel="noopener" class="btn-ghost btn-ghost-sm">
-          <i class="fa-brands fa-github" style="font-size: 12px;"></i> GitHub
-        </a>
-      </div>
-
-      <!-- Wallet -->
-      <div class="card project-card fade-in fd7">
-        <div class="flex items-center justify-between mb-3">
-          <span class="text-caption" style="color: var(--ash);">03</span>
-          <span class="pill pill-accent">Python</span>
-        </div>
-        <h3 class="project-title mb-2">Wallet Payment Backend</h3>
-        <p class="project-desc mb-4">Production-grade digital wallet API with double-entry ledger accounting and idempotent transactions.</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="pill">FastAPI</span>
-          <span class="pill">PostgreSQL</span>
-          <span class="pill">Redis</span>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <a href="https://github.com/RajNair06/wallet" target="_blank" rel="noopener" class="btn-ghost btn-ghost-sm">
-            <i class="fa-brands fa-github" style="font-size: 12px;"></i> GitHub
-          </a>
-          <a href="https://wallet-tv64.onrender.com" target="_blank" rel="noopener" class="btn-ghost btn-ghost-sm">
-            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 10px;"></i> Live
-          </a>
-        </div>
-      </div>
-
-      <!-- Vigil -->
-      <div class="card project-card fade-in fd7">
-        <div class="flex items-center justify-between mb-3">
-          <span class="text-caption" style="color: var(--ash);">04</span>
-          <span class="pill pill-accent">Python</span>
-        </div>
-        <h3 class="project-title mb-2">Vigil — IDS</h3>
-        <p class="project-desc mb-4">Real-time log ingestion and two-stage attack detection pipeline with observability.</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="pill">FastAPI</span>
-          <span class="pill">SQLAlchemy</span>
-          <span class="pill">Prometheus</span>
-        </div>
-        <a href="https://github.com/RajNair06/vigil" target="_blank" rel="noopener" class="btn-ghost btn-ghost-sm">
-          <i class="fa-brands fa-github" style="font-size: 12px;"></i> GitHub
-        </a>
-      </div>
-
-      <!-- TradeForge -->
-      <div class="card project-card fade-in fd8">
-        <div class="flex items-center justify-between mb-3">
-          <span class="text-caption" style="color: var(--ash);">05</span>
-          <span class="pill pill-accent">Python</span>
-        </div>
-        <h3 class="project-title mb-2">TradeForge</h3>
-        <p class="project-desc mb-4">Technical analysis platform with real-time stock data, SMA indicators, and Chart.js visualizations.</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="pill">FastAPI</span>
-          <span class="pill">Redis</span>
-          <span class="pill">Chart.js</span>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <a href="https://github.com/RajNair06/tradeforge_web" target="_blank" rel="noopener" class="btn-ghost btn-ghost-sm">
-            <i class="fa-brands fa-github" style="font-size: 12px;"></i> GitHub
-          </a>
-          <a href="https://tradeforgeweb-production.up.railway.app/" target="_blank" rel="noopener" class="btn-ghost btn-ghost-sm">
-            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 10px;"></i> Live
-          </a>
-        </div>
-      </div>
-
+      <ul class="stat-list">
+        <li class="stat-row">
+          <div class="stat-row__label"><span>PYTHON</span><span>90%</span></div>
+          <div class="stat-row__bar"><div class="stat-row__fill" style="width:90%"></div></div>
+        </li>
+        <li class="stat-row">
+          <div class="stat-row__label"><span>GO</span><span>70%</span></div>
+          <div class="stat-row__bar"><div class="stat-row__fill" style="width:70%"></div></div>
+        </li>
+        <li class="stat-row">
+          <div class="stat-row__label"><span>BACKEND</span><span>95%</span></div>
+          <div class="stat-row__bar"><div class="stat-row__fill" style="width:95%"></div></div>
+        </li>
+      </ul>
     </div>
   </section>
 
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="divider"></div>
-  </div>
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="quest-list">
 
-  <!-- FOOTER -->
-  <footer class="max-w-7xl mx-auto px-6 py-12">
-    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8 fade-in fd9">
-      <div>
-        <p class="section-label mb-4">Connect</p>
-        <div class="flex items-center gap-3">
-          <a href="mailto:nairraj311@gmail.com" class="social-icon" aria-label="Email">
-            <i class="fa-regular fa-envelope"></i>
-          </a>
-          <a href="https://linkedin.com/in/raj-n06" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
-            <i class="fa-brands fa-linkedin-in"></i>
-          </a>
-          <a href="https://github.com/RajNair06" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub">
-            <i class="fa-brands fa-github"></i>
-          </a>
-          <a href="https://x.com/RajNair06" target="_blank" rel="noopener" class="social-icon" aria-label="X">
-            <i class="fa-brands fa-x-twitter"></i>
-          </a>
+      <div class="quest pixel-panel">
+        <div>
+          <div class="quest__title">gopswatch — Linux System Monitor</div>
+          <p class="quest__desc">Lightweight Linux resource monitor that reads metrics directly from /proc. No external dependencies. Supports CPU, memory, disk I/O, network, processes, and more.</p>
+          <div class="quest__stack">GO · LINUX · PROCFS</div>
+        </div>
+        <a href="https://github.com/RajNair06/gopswatch" target="_blank" class="pixel-btn ghost quest__link">GITHUB →</a>
+      </div>
+
+      <div class="quest pixel-panel">
+        <div>
+          <div class="quest__title">Load Balancer — Go</div>
+          <p class="quest__desc">HTTP load balancer with round-robin, least-connections, and consistent hashing routing, health checks, circuit breaker, and a real-time WebSocket dashboard.</p>
+          <div class="quest__stack">GO · WEBSOCKET</div>
+        </div>
+        <a href="https://github.com/RajNair06/load_balancer" target="_blank" class="pixel-btn ghost quest__link">GITHUB →</a>
+      </div>
+
+      <div class="quest pixel-panel">
+        <div>
+          <div class="quest__title">Wallet Payment Backend</div>
+          <p class="quest__desc">Production-grade digital wallet API with double-entry ledger accounting and idempotent transaction processing.</p>
+          <div class="quest__stack">FASTAPI · SQLMODEL · POSTGRESQL · REDIS · DRAMATIQ</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+          <a href="https://github.com/RajNair06/wallet" target="_blank" class="pixel-btn ghost quest__link">GITHUB →</a>
+          <a href="https://wallet-tv64.onrender.com" target="_blank" class="pixel-btn quest__link">LIVE →</a>
         </div>
       </div>
-      <div class="text-caption">
-        <p>Mumbai, India</p>
-        <p style="margin-top: 4px;">© Raj Nair</p>
+
+      <div class="quest pixel-panel">
+        <div>
+          <div class="quest__title">Vigil — Intrusion Detection System</div>
+          <p class="quest__desc">Real-time log ingestion and two-stage attack detection pipeline with observability.</p>
+          <div class="quest__stack">FASTAPI · SQLALCHEMY · POSTGRESQL · PROMETHEUS</div>
+        </div>
+        <a href="https://github.com/RajNair06/vigil" target="_blank" class="pixel-btn ghost quest__link">GITHUB →</a>
+      </div>
+
+      <div class="quest pixel-panel">
+        <div>
+          <div class="quest__title">TradeForge</div>
+          <p class="quest__desc">Technical analysis platform and API with real-time stock data, SMA indicators, and interactive Chart.js visualizations.</p>
+          <div class="quest__stack">FASTAPI · REDIS · YFINANCE · CHART.JS</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+          <a href="https://github.com/RajNair06/tradeforge_web" target="_blank" class="pixel-btn ghost quest__link">GITHUB →</a>
+          <a href="https://tradeforgeweb-production.up.railway.app/" target="_blank" class="pixel-btn quest__link">LIVE →</a>
+        </div>
+      </div>
+
+    </div>
+    <div style="margin-top:2rem;text-align:center">
+      <a href="/projects.html" class="pixel-btn">VIEW ALL PROJECTS →</a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-label">GET IN TOUCH</div>
+    <h2 class="section-title">Contacts</h2>
+    <div class="save-point pixel-panel">
+      <div>
+        <p>Hiring, collaborating, or just want to talk backend architecture? Drop a message — I check this save file often.</p>
+      </div>
+      <div class="save-point__links">
+        <a class="save-point__link" href="mailto:nairraj311@gmail.com">nairraj311@gmail.com <span>EMAIL</span></a>
+        <a class="save-point__link" href="https://github.com/RajNair06" target="_blank">github.com/RajNair06 <span>GITHUB</span></a>
+        <a class="save-point__link" href="https://linkedin.com/in/raj-n06" target="_blank">linkedin.com/in/raj-n06 <span>LINKEDIN</span></a>
+        <a class="save-point__link" href="https://x.com/RajNair06" target="_blank">x.com/RajNair06 <span>X / TWITTER</span></a>
       </div>
     </div>
-  </footer>
+  </section>
+
+</main>
+
+<footer>© 2026 RAJ NAIR</footer>
+
+<script>
+const toggle=document.getElementById('navToggle');
+const links=document.getElementById('navLinks');
+toggle.addEventListener('click',()=>links.classList.toggle('is-open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('is-open')));
+</script>
 
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects — Raj Nair</title>
+  <title>Quest Log — Raj Nair</title>
   <meta name="description" content="Projects built by Raj Nair — backend engineer specializing in Python, FastAPI, Django, distributed systems, and real-time applications.">
   <meta name="keywords" content="Raj Nair, projects, portfolio, backend, Python, FastAPI, Django, GitHub">
   <meta name="author" content="Raj Nair">
@@ -12,388 +12,403 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
-  <meta property="og:title" content="Projects — Raj Nair">
+  <meta property="og:title" content="Quest Log — Raj Nair">
   <meta property="og:description" content="Projects built by Raj Nair — backend engineer specializing in Python, FastAPI, Django, distributed systems, and real-time applications.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rajnair06.github.io/projects.html">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Projects — Raj Nair">
+  <meta name="twitter:title" content="Quest Log — Raj Nair">
   <meta name="twitter:description" content="Projects built by Raj Nair — backend engineer specializing in Python, FastAPI, Django, distributed systems, and real-time applications.">
-  <script src="https://cdn.tailwindcss.com">
-  </script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/nes.icons@latest/css/nes-icons.min.css" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body, pre, code, kbd, samp {
+      font-family: "Press Start 2P";
+    }
 
     body {
-      font-family: 'JetBrains Mono', monospace;
-      background: #000;
+      background: #0a0a2e;
       color: #fff;
+      overflow-x: hidden;
     }
 
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #000; }
-    ::-webkit-scrollbar-thumb { background: #333; }
-
-    .brutal-nav {
-      border-bottom: 3px solid #fff;
-      background: #000;
+    .starfield {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(1px 1px at 10% 20%, #fff, transparent),
+        radial-gradient(1px 1px at 20% 50%, #fff, transparent),
+        radial-gradient(1px 1px at 30% 10%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 40% 60%, #fff, transparent),
+        radial-gradient(1px 1px at 50% 30%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 60% 80%, #fff, transparent),
+        radial-gradient(1px 1px at 70% 15%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 80% 45%, #fff, transparent),
+        radial-gradient(1px 1px at 90% 70%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 15% 75%, #fff, transparent),
+        radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 35% 90%, #fff, transparent),
+        radial-gradient(1px 1px at 45% 5%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 55% 55%, #fff, transparent),
+        radial-gradient(1px 1px at 65% 40%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 75% 85%, #fff, transparent),
+        radial-gradient(1px 1px at 85% 25%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 95% 65%, #fff, transparent),
+        radial-gradient(2px 2px at 12% 88%, rgba(147,197,253,0.8), transparent),
+        radial-gradient(2px 2px at 52% 12%, rgba(253,186,116,0.6), transparent),
+        radial-gradient(2px 2px at 88% 52%, rgba(167,139,250,0.7), transparent);
+      background-size: 200px 200px;
+      animation: twinkle 8s ease-in-out infinite alternate;
     }
 
-    .brutal-nav a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
+    @keyframes twinkle {
+      0% { opacity: 0.7; }
+      100% { opacity: 1; }
     }
 
-    .brutal-nav a:hover {
-      text-decoration: underline;
-      text-underline-offset: 4px;
+    .scanlines {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.03) 0px,
+        rgba(0, 0, 0, 0.03) 1px,
+        transparent 1px,
+        transparent 2px
+      );
     }
 
-    .brutal-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 24px;
-      border: 2px solid #fff;
-      color: #fff;
-      background: #000;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      cursor: pointer;
+    .content {
+      position: relative;
+      z-index: 1;
     }
 
-    .brutal-btn:hover {
-      background: #fff;
-      color: #000;
+    .float {
+      animation: float 3s ease-in-out infinite;
     }
 
-    .brutal-btn:active {
-      background: #888;
-      color: #000;
-      border-color: #888;
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
     }
 
-    .brutal-section {
-      border-top: 3px solid #fff;
-      padding: 80px 0;
-    }
-
-    .brutal-heading {
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-      color: #888;
-    }
-
-    .brutal-link {
-      color: #fff;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      font-weight: 500;
-    }
-
-    .brutal-link:hover {
-      background: #fff;
-      color: #000;
-      text-decoration: none;
-    }
-
-    .project-card {
-      border: 2px solid #fff;
-      padding: 24px;
-    }
-
-    .project-card:hover {
-      background: #fff;
-      color: #000;
-    }
-
-    .project-card:hover .project-title { color: #000; }
-    .project-card:hover .project-desc { color: #333; }
-    .project-card:hover .badge { border-color: #000; color: #000; }
-    .project-card:hover .brutal-btn-ghost { border-color: #000; color: #000; }
-    .project-card:hover .brutal-btn-ghost:hover { background: #000; color: #fff; }
-
-    .project-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-    }
-
-    .project-desc {
-      font-size: 0.85rem;
-      color: #888;
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 3px 10px;
-      font-size: 0.6rem;
-      font-weight: 500;
-      border: 1px solid #555;
-      color: #aaa;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .brutal-btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      border: 1px solid #555;
-      color: #aaa;
-      background: transparent;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      font-weight: 600;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .brutal-btn-ghost:hover {
-      border-color: #fff;
-      color: #fff;
-    }
-
-    .fade-up {
+    .fade-in {
       opacity: 0;
-      transform: translateY(40px);
-      animation: fadeUp 0.8s ease forwards;
+      transform: translateY(20px);
+      animation: fadeIn 0.8s ease forwards;
     }
 
-    .fade-up-d1 { animation-delay: 0.1s; }
-    .fade-up-d2 { animation-delay: 0.2s; }
-    .fade-up-d3 { animation-delay: 0.3s; }
-    .fade-up-d4 { animation-delay: 0.4s; }
-    .fade-up-d5 { animation-delay: 0.5s; }
-    .fade-up-d6 { animation-delay: 0.6s; }
-    .fade-up-d7 { animation-delay: 0.7s; }
-    .fade-up-d8 { animation-delay: 0.8s; }
-    .fade-up-d9 { animation-delay: 0.9s; }
+    .fade-in-d1 { animation-delay: 0.2s; }
+    .fade-in-d2 { animation-delay: 0.4s; }
+    .fade-in-d3 { animation-delay: 0.6s; }
+    .fade-in-d4 { animation-delay: 0.8s; }
+    .fade-in-d5 { animation-delay: 1.0s; }
+    .fade-in-d6 { animation-delay: 1.2s; }
+    .fade-in-d7 { animation-delay: 1.4s; }
 
-    @keyframes fadeUp {
+    @keyframes fadeIn {
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 768px) {
-      .brutal-section { padding: 40px 0; }
-      .project-card { padding: 16px; }
-      .project-title { font-size: 1rem; }
-      .project-desc { font-size: 0.8rem; }
-      .brutal-btn { padding: 8px 18px; font-size: 0.7rem; }
+    .nes-container.is-dark {
+      background: #1a1a2e;
+      margin-bottom: 24px;
     }
 
-    @media (max-width: 400px) {
-      .project-card { padding: 12px; }
-      .badge { font-size: 0.55rem; padding: 2px 8px; }
+    .nes-container .title {
+      background: #1a1a2e;
+      font-size: 0.7rem;
+    }
+
+    .nes-btn {
+      font-size: 0.65rem;
+    }
+
+    .nes-badge {
+      font-size: 0.5rem;
+    }
+
+    .project-card {
+      transition: transform 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .difficulty-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.5rem;
+      color: #92cc41;
+    }
+
+    @media (max-width: 768px) {
+      .scanlines { opacity: 0.5; }
+      .nes-btn { font-size: 0.55rem; padding: 8px 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="brutal-nav">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="/">Raj Nair</a>
-    </div>
-  </nav>
+  <div class="starfield"></div>
+  <div class="scanlines"></div>
 
-  <!-- PROJECTS -->
-  <section class="min-h-screen px-6 pt-24 md:pt-28 pb-16">
-    <div class="max-w-6xl mx-auto">
-      <p class="brutal-heading fade-up fade-up-d1">Projects</p>
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-8 uppercase tracking-tight fade-up fade-up-d2">Things I've Built</h1>
+  <div class="content">
 
-      <div class="grid md:grid-cols-2 gap-5 md:gap-6">
+    <section class="px-4 py-12">
+      <div class="max-w-5xl mx-auto">
 
-        <!-- Project 1 -->
-        <div class="project-card fade-up fade-up-d3">
-          <div class="flex items-start justify-between mb-4">
-            <p class="text-xs font-bold text-gray-600 tracking-widest">01</p>
-          </div>
-          <h2 class="project-title">gopswatch — Linux System Monitor</h2>
-          <p class="project-desc">
-            Lightweight Linux resource monitor that reads metrics directly from /proc. No external dependencies. Supports CPU, memory, disk I/O, network, processes, and more.
-          </p>
-          <div class="flex flex-wrap gap-2 mb-5">
-            <span class="badge">Go</span>
-            <span class="badge">Linux</span>
-            <span class="badge">procfs</span>
-          </div>
-          <div class="flex flex-wrap items-center gap-3">
-            <a href="https://github.com/RajNair06/gopswatch" target="_blank" rel="noopener" class="brutal-btn-ghost">
-              <i class="fa-brands fa-github"></i> GitHub
-            </a>
-          </div>
+        <div class="flex items-center gap-4 mb-12 fade-in">
+          <i class="nes-icon trophy is-large"></i>
+          <h1 class="nes-text is-warning" style="font-size: clamp(1rem, 4vw, 1.5rem);">QUEST LOG</h1>
+          <i class="nes-icon star is-large float"></i>
         </div>
 
-        <!-- Project 2 -->
-        <div class="project-card fade-up fade-up-d4">
-          <div class="flex items-start justify-between mb-4">
-            <p class="text-xs font-bold text-gray-600 tracking-widest">02</p>
-          </div>
-          <h2 class="project-title">Load Balancer — Go</h2>
-          <p class="project-desc">
-            HTTP load balancer with round-robin, least-connections, and consistent hashing routing, health checks, circuit breaker, and a real-time WebSocket dashboard.
-          </p>
-          <div class="flex flex-wrap gap-2 mb-5">
-            <span class="badge">Go</span>
-            <span class="badge">WebSocket</span>
-          </div>
-          <div class="flex flex-wrap items-center gap-3">
-            <a href="https://github.com/RajNair06/load_balancer" target="_blank" rel="noopener" class="brutal-btn-ghost">
-              <i class="fa-brands fa-github"></i> GitHub
-            </a>
-          </div>
+        <div class="nes-balloon from-left nes-pointer mb-12 fade-in fade-in-d1">
+          <p style="font-size: 0.6rem; line-height: 1.8;">All the projects I've built. Click to explore the code or try the live demos.</p>
         </div>
 
-        <!-- Project 3 -->
-        <div class="project-card fade-up fade-up-d5">
-          <div class="flex items-start justify-between mb-4">
-            <p class="text-xs font-bold text-gray-600 tracking-widest">03</p>
+        <div class="grid md:grid-cols-2 gap-6">
+
+          <div class="project-card fade-in fade-in-d1">
+            <div class="nes-container is-dark with-title">
+              <p class="title">gopswatch</p>
+              <div class="difficulty-badge mb-3">
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small is-transparent"></i>
+              </div>
+              <p style="font-size: 0.55rem; line-height: 2; margin-bottom: 16px;">
+                Lightweight Linux resource monitor that reads metrics directly from /proc. No external dependencies. Supports CPU, memory, disk I/O, network, processes, and more.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <a class="nes-badge is-split">
+                  <span class="is-dark">Go</span>
+                  <span class="is-success">Linux</span>
+                </a>
+                <a class="nes-badge is-split">
+                  <span class="is-dark">procfs</span>
+                  <span class="is-primary">CLI</span>
+                </a>
+              </div>
+              <a href="https://github.com/RajNair06/gopswatch" target="_blank" rel="noopener" class="nes-btn is-primary" style="font-size: 0.5rem;">GITHUB</a>
+            </div>
           </div>
-          <h2 class="project-title">Wallet Payment Backend</h2>
-          <p class="project-desc">
-            Production-grade digital wallet API with double-entry ledger accounting and idempotent transaction processing.
-          </p>
-          <div class="flex flex-wrap gap-2 mb-5">
-            <span class="badge">FastAPI</span>
-            <span class="badge">SQLModel</span>
-            <span class="badge">PostgreSQL</span>
-            <span class="badge">Redis</span>
-            <span class="badge">Dramatiq</span>
+
+          <div class="project-card fade-in fade-in-d2">
+            <div class="nes-container is-dark with-title">
+              <p class="title">Load Balancer</p>
+              <div class="difficulty-badge mb-3">
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+              </div>
+              <p style="font-size: 0.55rem; line-height: 2; margin-bottom: 16px;">
+                HTTP load balancer with round-robin, least-connections, consistent hashing, health checks, circuit breaker, and real-time WebSocket dashboard.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <a class="nes-badge is-split">
+                  <span class="is-dark">Go</span>
+                  <span class="is-primary">WebSocket</span>
+                </a>
+              </div>
+              <a href="https://github.com/RajNair06/load_balancer" target="_blank" rel="noopener" class="nes-btn is-primary" style="font-size: 0.5rem;">GITHUB</a>
+            </div>
           </div>
-          <div class="flex flex-wrap items-center gap-3">
-            <a href="https://github.com/RajNair06/wallet" target="_blank" rel="noopener" class="brutal-btn-ghost">
-              <i class="fa-brands fa-github"></i> GitHub
-            </a>
-            <a href="https://wallet-tv64.onrender.com" target="_blank" rel="noopener" class="brutal-btn-ghost">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
-            </a>
+
+          <div class="project-card fade-in fade-in-d3">
+            <div class="nes-container is-dark with-title">
+              <p class="title">Wallet Payment Backend</p>
+              <div class="difficulty-badge mb-3">
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+              </div>
+              <p style="font-size: 0.55rem; line-height: 2; margin-bottom: 16px;">
+                Production-grade digital wallet API with double-entry ledger accounting and idempotent transaction processing.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <a class="nes-badge is-split">
+                  <span class="is-dark">FastAPI</span>
+                  <span class="is-success">SQLModel</span>
+                </a>
+                <a class="nes-badge is-split">
+                  <span class="is-dark">PostgreSQL</span>
+                  <span class="is-warning">Redis</span>
+                </a>
+                <a class="nes-badge is-split">
+                  <span class="is-dark">Dramatiq</span>
+                </a>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <a href="https://github.com/RajNair06/wallet" target="_blank" rel="noopener" class="nes-btn is-primary" style="font-size: 0.5rem;">GITHUB</a>
+                <a href="https://wallet-tv64.onrender.com" target="_blank" rel="noopener" class="nes-btn is-success" style="font-size: 0.5rem;">LIVE DEMO</a>
+              </div>
+            </div>
           </div>
+
+          <div class="project-card fade-in fade-in-d4">
+            <div class="nes-container is-dark with-title">
+              <p class="title">Vigil — IDS</p>
+              <div class="difficulty-badge mb-3">
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small is-transparent"></i>
+              </div>
+              <p style="font-size: 0.55rem; line-height: 2; margin-bottom: 16px;">
+                Real-time log ingestion and two-stage attack detection pipeline with observability. Rule-based and statistical detection methods.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <a class="nes-badge is-split">
+                  <span class="is-dark">FastAPI</span>
+                  <span class="is-error">SQLAlchemy</span>
+                </a>
+                <a class="nes-badge is-split">
+                  <span class="is-dark">PostgreSQL</span>
+                  <span class="is-primary">Prometheus</span>
+                </a>
+              </div>
+              <a href="https://github.com/RajNair06/vigil" target="_blank" rel="noopener" class="nes-btn is-primary" style="font-size: 0.5rem;">GITHUB</a>
+            </div>
+          </div>
+
+          <div class="project-card fade-in fade-in-d5">
+            <div class="nes-container is-dark with-title">
+              <p class="title">TradeForge</p>
+              <div class="difficulty-badge mb-3">
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small is-transparent"></i>
+              </div>
+              <p style="font-size: 0.55rem; line-height: 2; margin-bottom: 16px;">
+                Technical analysis platform and API with real-time stock data, SMA indicators, and interactive Chart.js visualizations.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <a class="nes-badge is-split">
+                  <span class="is-dark">FastAPI</span>
+                  <span class="is-warning">Redis</span>
+                </a>
+                <a class="nes-badge is-split">
+                  <span class="is-dark">yfinance</span>
+                  <span class="is-primary">Chart.js</span>
+                </a>
+                <a class="nes-badge is-split">
+                  <span class="is-dark">Bootstrap 5</span>
+                </a>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <a href="https://github.com/RajNair06/tradeforge_web" target="_blank" rel="noopener" class="nes-btn is-primary" style="font-size: 0.5rem;">GITHUB</a>
+                <a href="https://tradeforgeweb-production.up.railway.app/" target="_blank" rel="noopener" class="nes-btn is-success" style="font-size: 0.5rem;">LIVE DEMO</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card fade-in fade-in-d6">
+            <div class="nes-container is-dark with-title">
+              <p class="title">Collaborative Task Board</p>
+              <div class="difficulty-badge mb-3">
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small is-transparent"></i>
+              </div>
+              <p style="font-size: 0.55rem; line-height: 2; margin-bottom: 16px;">
+                Trello-like backend with real-time collaboration via WebSockets and Redis pub/sub. RBAC, audit logging, and activity feeds.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <a class="nes-badge is-split">
+                  <span class="is-dark">FastAPI</span>
+                  <span class="is-success">WebSockets</span>
+                </a>
+                <a class="nes-badge is-split">
+                  <span class="is-dark">Redis</span>
+                  <span class="is-warning">Celery</span>
+                </a>
+                <a class="nes-badge is-split">
+                  <span class="is-dark">PostgreSQL</span>
+                  <span class="is-primary">Docker</span>
+                </a>
+              </div>
+              <a href="https://github.com/RajNair06/task_board" target="_blank" rel="noopener" class="nes-btn is-primary" style="font-size: 0.5rem;">GITHUB</a>
+            </div>
+          </div>
+
+          <div class="project-card fade-in fade-in-d7">
+            <div class="nes-container is-dark with-title">
+              <p class="title">LearnFlow Backend</p>
+              <div class="difficulty-badge mb-3">
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small"></i>
+                <i class="nes-icon star is-small is-transparent"></i>
+                <i class="nes-icon star is-small is-transparent"></i>
+              </div>
+              <p style="font-size: 0.55rem; line-height: 2; margin-bottom: 16px;">
+                Goal-tracking platform with tier-based rate limiting, Redis caching, and Celery-scheduled reminders.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <a class="nes-badge is-split">
+                  <span class="is-dark">Django</span>
+                  <span class="is-primary">DRF</span>
+                </a>
+                <a class="nes-badge is-split">
+                  <span class="is-dark">PostgreSQL</span>
+                  <span class="is-warning">Docker</span>
+                </a>
+                <a class="nes-badge is-split">
+                  <span class="is-dark">Redis</span>
+                  <span class="is-success">Celery</span>
+                </a>
+              </div>
+              <a href="https://github.com/RajNair06/learnflow_backend" target="_blank" rel="noopener" class="nes-btn is-primary" style="font-size: 0.5rem;">GITHUB</a>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Project 4 -->
-        <div class="project-card fade-up fade-up-d6">
-          <div class="flex items-start justify-between mb-4">
-            <p class="text-xs font-bold text-gray-600 tracking-widest">04</p>
-          </div>
-          <h2 class="project-title">Vigil — Intrusion Detection System</h2>
-          <p class="project-desc">
-            Real-time log ingestion and two-stage attack detection pipeline with observability.
-          </p>
-          <div class="flex flex-wrap gap-2 mb-5">
-            <span class="badge">FastAPI</span>
-            <span class="badge">SQLAlchemy</span>
-            <span class="badge">PostgreSQL</span>
-            <span class="badge">Prometheus</span>
-          </div>
-          <div class="flex flex-wrap items-center gap-3">
-            <a href="https://github.com/RajNair06/vigil" target="_blank" rel="noopener" class="brutal-btn-ghost">
-              <i class="fa-brands fa-github"></i> GitHub
-            </a>
-          </div>
+        <div class="flex justify-center gap-4 mt-16 fade-in">
+          <a href="/" class="nes-btn is-primary" style="font-size: 0.65rem;">
+            ← BACK TO OVERWORLD
+          </a>
         </div>
 
-        <!-- Project 5 -->
-        <div class="project-card fade-up fade-up-d7">
-          <div class="flex items-start justify-between mb-4">
-            <p class="text-xs font-bold text-gray-600 tracking-widest">05</p>
-          </div>
-          <h2 class="project-title">TradeForge</h2>
-          <p class="project-desc">
-            Technical analysis platform and API with real-time stock data, SMA indicators, and interactive Chart.js visualizations.
-          </p>
-          <div class="flex flex-wrap gap-2 mb-5">
-            <span class="badge">FastAPI</span>
-            <span class="badge">Redis</span>
-            <span class="badge">yfinance</span>
-            <span class="badge">Chart.js</span>
-            <span class="badge">Bootstrap 5</span>
-          </div>
-          <div class="flex flex-wrap items-center gap-3">
-            <a href="https://github.com/RajNair06/tradeforge_web" target="_blank" rel="noopener" class="brutal-btn-ghost">
-              <i class="fa-brands fa-github"></i> GitHub
-            </a>
-            <a href="https://tradeforgeweb-production.up.railway.app/" target="_blank" rel="noopener" class="brutal-btn-ghost">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 6 -->
-        <div class="project-card fade-up fade-up-d8">
-          <div class="flex items-start justify-between mb-4">
-            <p class="text-xs font-bold text-gray-600 tracking-widest">06</p>
-          </div>
-          <h2 class="project-title">Real-time Collaborative Task Board</h2>
-          <p class="project-desc">
-            Trello-like backend with real-time collaboration via WebSockets and Redis pub/sub.
-          </p>
-          <div class="flex flex-wrap gap-2 mb-5">
-            <span class="badge">FastAPI</span>
-            <span class="badge">WebSockets</span>
-            <span class="badge">PostgreSQL</span>
-            <span class="badge">Redis</span>
-            <span class="badge">Celery</span>
-            <span class="badge">Docker</span>
-          </div>
-          <div class="flex flex-wrap items-center gap-3">
-            <a href="https://github.com/RajNair06/task_board" target="_blank" rel="noopener" class="brutal-btn-ghost">
-              <i class="fa-brands fa-github"></i> GitHub
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 7 -->
-        <div class="project-card fade-up fade-up-d9">
-          <div class="flex items-start justify-between mb-4">
-            <p class="text-xs font-bold text-gray-600 tracking-widest">07</p>
-          </div>
-          <h2 class="project-title">LearnFlow Backend</h2>
-          <p class="project-desc">
-            Goal-tracking platform with tier-based rate limiting, Redis caching, and Celery-scheduled reminders.
-          </p>
-          <div class="flex flex-wrap gap-2 mb-5">
-            <span class="badge">Django</span>
-            <span class="badge">DRF</span>
-            <span class="badge">PostgreSQL</span>
-            <span class="badge">Redis</span>
-            <span class="badge">Celery</span>
-            <span class="badge">Docker</span>
-          </div>
-          <div class="flex flex-wrap items-center gap-3">
-            <a href="https://github.com/RajNair06/learnflow_backend" target="_blank" rel="noopener" class="brutal-btn-ghost">
-              <i class="fa-brands fa-github"></i> GitHub
-            </a>
-          </div>
+        <div class="flex justify-center items-center gap-6 mt-16 fade-in">
+          <i class="nes-mario"></i>
+          <i class="nes-kirby"></i>
+          <i class="nes-bulbasaur"></i>
+          <i class="nes-charmander"></i>
+          <i class="nes-squirtle"></i>
         </div>
 
       </div>
+    </section>
 
-      <div class="mt-10 fade-up fade-up-d5">
-        <a href="/" class="brutal-btn">&larr; Back Home</a>
-      </div>
-    </div>
-  </section>
+  </div>
 
 </body>
 </html>

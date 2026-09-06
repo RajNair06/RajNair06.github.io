@@ -266,7 +266,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offse
     <h2 class="section-title">Contacts</h2>
     <div class="save-point pixel-panel">
       <div>
-        <p>Hiring, collaborating, or just want to talk backend architecture? Drop a message — I check this save file often.</p>
+        <p>Hiring, collaborating, or just want to talk backend architecture? Drop a message.</p>
       </div>
       <div class="save-point__links">
         <a class="save-point__link" href="mailto:nairraj311@gmail.com">nairraj311@gmail.com <span>EMAIL</span></a>
@@ -287,38 +287,60 @@ const links=document.getElementById('navLinks');
 toggle.addEventListener('click',()=>links.classList.toggle('is-open'));
 links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('is-open')));
 
-// Pikachu natural walking movement
+// Pikachu Z-path looping movement
 const pikachu=document.createElement('img');
 pikachu.src='pikachu_run.gif';
-pikachu.style.cssText='position:fixed;width:40px;height:40px;z-index:10000;pointer-events:none;transition:all 4s linear;image-rendering:pixelated;';
+pikachu.style.cssText='position:fixed;width:40px;height:40px;z-index:10000;pointer-events:none;image-rendering:pixelated;';
 document.body.appendChild(pikachu);
 
-let pikachuX=window.innerWidth/2;
-let pikachuY=window.innerHeight/2;
-let pikachuDir=1;
+// Z-path waypoints: top-left → top-right → bottom-left → bottom-right → loop
+const waypoints=[
+  {x:50,y:50,facing:1},      // top-left (facing right)
+  {x:0,y:50,facing:1},       // top-right (facing right)
+  {x:50,y:0,facing:-1},      // bottom-left (facing left)
+  {x:0,y:0,facing:1},        // bottom-right (facing right)
+];
 
-function movePikachu(){
+let currentWaypoint=0;
+
+function updateWaypointPositions(){
   const maxX=window.innerWidth-50;
   const maxY=window.innerHeight-50;
-  
-  const stepX=(Math.random()*100+60)*pikachuDir;
-  const stepY=(Math.random()*60-30);
-  
-  pikachuX=Math.max(0,Math.min(maxX,pikachuX+stepX));
-  pikachuY=Math.max(0,Math.min(maxY,pikachuY+stepY));
-  
-  if(pikachuX<=5||pikachuX>=maxX-5){
-    pikachuDir*=-1;
-  }
-  
-  pikachu.style.transform=pikachuDir<0?'scaleX(-1)':'scaleX(1)';
-  pikachu.style.left=pikachuX+'px';
-  pikachu.style.top=pikachuY+'px';
+  waypoints[0]={x:50,y:50,facing:1};
+  waypoints[1]={x:maxX,y:50,facing:1};
+  waypoints[2]={x:50,y:maxY,facing:-1};
+  waypoints[3]={x:maxX,y:maxY,facing:1};
 }
 
-pikachu.style.left=pikachuX+'px';
-pikachu.style.top=pikachuY+'px';
-setInterval(movePikachu,4500);
+updateWaypointPositions();
+window.addEventListener('resize',updateWaypointPositions);
+
+function movePikachu(){
+  const point=waypoints[currentWaypoint];
+  
+  // Instantaneous flip (no transition)
+  pikachu.style.transform=point.facing<0?'scaleX(-1)':'scaleX(1)';
+  
+  // Smooth position transition
+  pikachu.style.transition='left 4s linear, top 4s linear';
+  pikachu.style.left=point.x+'px';
+  pikachu.style.top=point.y+'px';
+  
+  currentWaypoint=(currentWaypoint+1)%waypoints.length;
+}
+
+// Start at first waypoint
+const startPoint=waypoints[0];
+pikachu.style.left=startPoint.x+'px';
+pikachu.style.top=startPoint.y+'px';
+pikachu.style.transform=startPoint.facing<0?'scaleX(-1)':'scaleX(1)';
+
+// Begin movement after a short delay
+setTimeout(()=>{
+  currentWaypoint=1;
+  movePikachu();
+  setInterval(movePikachu,4500);
+},100);
 </script>
 
 </body>

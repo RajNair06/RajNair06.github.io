@@ -293,38 +293,35 @@ pikachu.src='pikachu_run.gif';
 pikachu.style.cssText='position:fixed;width:40px;height:40px;z-index:10000;pointer-events:none;image-rendering:pixelated;';
 document.body.appendChild(pikachu);
 
-// Z-path waypoints: top-left → top-right → bottom-left → bottom-right → loop
-const waypoints=[
-  {x:50,y:50,facing:1},      // top-left (facing right)
-  {x:0,y:50,facing:1},       // top-right (facing right)
-  {x:50,y:0,facing:-1},      // bottom-left (facing left)
-  {x:0,y:0,facing:1},        // bottom-right (facing right)
-];
-
+let waypoints=[];
 let currentWaypoint=0;
 
 function updateWaypointPositions(){
   const maxX=window.innerWidth-50;
   const maxY=window.innerHeight-50;
-  waypoints[0]={x:50,y:50,facing:1};
-  waypoints[1]={x:maxX,y:50,facing:1};
-  waypoints[2]={x:50,y:maxY,facing:-1};
-  waypoints[3]={x:maxX,y:maxY,facing:1};
+  waypoints=[
+    {x:50,y:50},      // top-left
+    {x:maxX,y:50},    // top-right
+    {x:50,y:maxY},    // bottom-left
+    {x:maxX,y:maxY},  // bottom-right
+  ];
 }
 
 updateWaypointPositions();
 window.addEventListener('resize',updateWaypointPositions);
 
 function movePikachu(){
-  const point=waypoints[currentWaypoint];
+  const current=waypoints[currentWaypoint];
+  const next=waypoints[(currentWaypoint+1)%waypoints.length];
   
-  // Instantaneous flip (no transition)
-  pikachu.style.transform=point.facing<0?'scaleX(-1)':'scaleX(1)';
+  // Flip based on direction of movement
+  const facing=next.x>current.x?1:-1;
+  pikachu.style.transform=facing<0?'scaleX(-1)':'scaleX(1)';
   
   // Smooth position transition
   pikachu.style.transition='left 4s linear, top 4s linear';
-  pikachu.style.left=point.x+'px';
-  pikachu.style.top=point.y+'px';
+  pikachu.style.left=next.x+'px';
+  pikachu.style.top=next.y+'px';
   
   currentWaypoint=(currentWaypoint+1)%waypoints.length;
 }
@@ -333,11 +330,9 @@ function movePikachu(){
 const startPoint=waypoints[0];
 pikachu.style.left=startPoint.x+'px';
 pikachu.style.top=startPoint.y+'px';
-pikachu.style.transform=startPoint.facing<0?'scaleX(-1)':'scaleX(1)';
 
 // Begin movement after a short delay
 setTimeout(()=>{
-  currentWaypoint=1;
   movePikachu();
   setInterval(movePikachu,4500);
 },100);

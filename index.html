@@ -131,6 +131,32 @@ section{padding:6rem 0}
 
 .section-label{font-family:var(--font-display);font-size:0.7rem;color:var(--cyan);margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem}
 .section-label::before{content:"▶";color:var(--amber)}
+
+.player-stats-banner{
+  display:inline-flex;
+  align-items:center;
+  gap:0.5em;
+  background:#0a0818;
+  border:2px solid #4dfaff;
+  color:#4dfaff;
+  font-weight:bold;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  padding:0.5em 1.2em;
+  border-radius:4px;
+  box-shadow:0 0 8px rgba(77,250,255,0.6),0 0 16px rgba(77,250,255,0.3),inset 0 0 6px rgba(77,250,255,0.15);
+  text-shadow:0 0 6px rgba(77,250,255,0.8);
+  margin-bottom:1rem;
+  animation:glow-pulse 2.5s ease-in-out infinite;
+}
+.player-stats-banner .arrow{
+  color:#ff9d00;
+  text-shadow:0 0 6px rgba(255,157,0,0.7);
+}
+@keyframes glow-pulse{
+  0%,100%{box-shadow:0 0 8px rgba(77,250,255,0.6),0 0 16px rgba(77,250,255,0.3)}
+  50%{box-shadow:0 0 14px rgba(77,250,255,0.9),0 0 26px rgba(77,250,255,0.5)}
+}
 .section-title{font-family:var(--font-display);font-size:1.6rem;line-height:1.6;margin-bottom:2.5rem;max-width:20ch;color:#ffffff;font-weight:700;-webkit-text-stroke:2px #0a0818;paint-order:stroke fill;text-shadow:-2px -2px 0 #0a0818,2px -2px 0 #0a0818,-2px 2px 0 #0a0818,2px 2px 0 #0a0818}
 
 .hero{min-height:calc(100vh - 70px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:1.5rem}
@@ -226,7 +252,10 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offse
   </section>
 
   <section id="about">
-    <div class="section-label">PLAYER STATS</div>
+    <div class="player-stats-banner">
+      <span class="arrow">▶</span>
+      <span>PLAYER STATS</span>
+    </div>
     <h2 class="section-title">Character sheet</h2>
     <div class="stats-grid pixel-panel">
       <div>
@@ -294,7 +323,10 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offse
   </section>
 
   <section id="contact">
-    <div class="section-label">GET IN TOUCH</div>
+    <div class="player-stats-banner">
+      <span class="arrow">▶</span>
+      <span>GET IN TOUCH</span>
+    </div>
     <h2 class="section-title">Contacts</h2>
     <div class="save-point pixel-panel">
       <div>

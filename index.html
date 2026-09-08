@@ -170,6 +170,15 @@ section{padding:6rem 0}
 @media (max-width:800px){.stats-grid,.save-point{grid-template-columns:1fr}}
 @media (max-width:640px){.social-logos{gap:1rem}.social-logo{width:40px;height:40px}}
 
+@media (min-width:768px){
+  .hero > div{flex-direction:row!important}
+  .hero-avatar{order:2}
+}
+
+@media (max-width:767px){
+  body{background-attachment:scroll}
+}
+
 footer{padding:3rem 0;text-align:center;font-family:var(--font-display);font-size:0.6rem;color:var(--text-dim)}
 
 @media (max-width:760px){
@@ -199,7 +208,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offse
 <main class="wrap">
 
   <section class="hero" id="top">
-    <div style="display:flex;gap:2rem;align-items:center;flex-wrap:wrap">
+    <div style="display:flex;gap:2rem;align-items:center;flex-wrap:wrap;flex-direction:column">
+      <img src="typing.gif" alt="Avatar typing" class="hero-avatar">
       <div style="flex:1;min-width:280px">
         <h1 class="hero__title" id="heroTitle">Hi, I'm <span class="accent">Raj Nair</span><br>I build backend systems<br>that actually work</h1>
         <p class="hero__subtitle">Python & Go developer focused on APIs, distributed systems, and the kind of reliability that keeps things running in production.</p>
@@ -208,7 +218,6 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offse
           <a href="#contact" class="pixel-btn ghost">CONTACT</a>
         </div>
       </div>
-      <img src="typing.gif" alt="Avatar typing" class="hero-avatar">
     </div>
   </section>
 

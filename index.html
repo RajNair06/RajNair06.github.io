@@ -39,13 +39,23 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;cursor:url('closed_pokeball.png') 8 8, auto}
 body{
-  background:var(--bg-deep);
+  background-color:var(--bg-deep);
+  background-image:linear-gradient(rgba(20,21,43,0.7),rgba(20,21,43,0.7)),url('mobile.png');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
   color:var(--text);
   font-family:var(--font-body);
   font-size:20px;
   line-height:1.5;
   overflow-x:hidden;
   cursor:url('closed_pokeball.png') 8 8, auto;
+}
+@media(min-width:768px){
+  body{
+    background-image:linear-gradient(rgba(20,21,43,0.7),rgba(20,21,43,0.7)),url('desktop.jpg');
+  }
 }
 a{color:var(--cyan);text-decoration:none;cursor:url('open_pokeball.png') 8 8, pointer}
 ::selection{background:var(--amber);color:var(--outline)}
@@ -120,12 +130,13 @@ section{padding:6rem 0}
 
 .hero{min-height:calc(100vh - 70px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:1.5rem}
 .hero__eyebrow{font-family:var(--font-display);font-size:0.7rem;color:var(--rose)}
-.hero__title{font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.7;text-shadow:4px 4px 0 var(--outline)}
+.hero__title{font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.7;text-shadow:4px 4px 0 var(--outline);position:relative}
+.hero__title .cursor-line{position:relative;display:inline}
 .hero__title .accent{color:var(--amber)}
 .hero__subtitle{font-size:1.4rem;color:var(--text-dim);max-width:52ch}
 .hero__actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem}
 .hero__prompt{margin-top:2.5rem;font-family:var(--font-display);font-size:0.7rem;color:var(--text-dim)}
-.cursor{display:inline-block;width:0.7rem;height:1em;background:var(--amber);margin-left:4px;vertical-align:middle;animation:blink 1s steps(1) infinite}
+.cursor{display:inline-block;width:0.6rem;height:1.4em;background:var(--amber);margin-left:3px;vertical-align:baseline;animation:blink 1s steps(1) infinite}
 @media (prefers-reduced-motion:reduce){.cursor{animation:none}}
 @keyframes blink{50%{opacity:0}}
 
@@ -150,11 +161,14 @@ section{padding:6rem 0}
 @media (max-width:640px){.quest{grid-template-columns:1fr}}
 
 .save-point{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
-.save-point__links{display:flex;flex-direction:column;gap:1rem}
-.save-point__link{font-size:1.3rem;display:flex;justify-content:space-between;border-bottom:2px dotted var(--bg-panel-2);padding-bottom:0.5rem}
-.save-point__link span{font-family:var(--font-display);font-size:0.55rem;color:var(--text-dim)}
+.social-logos{display:flex;flex-direction:row;gap:1.5rem;flex-wrap:wrap}
+.social-logo{width:48px;height:48px;image-rendering:pixelated;transition:transform 0.2s ease;cursor:url('open_pokeball.png') 8 8, pointer}
+.social-logo:hover{transform:scale(1.15)}
+
+.hero-avatar{width:clamp(150px,25vw,250px);height:auto;image-rendering:pixelated;flex-shrink:0}
 
 @media (max-width:800px){.stats-grid,.save-point{grid-template-columns:1fr}}
+@media (max-width:640px){.social-logos{gap:1rem}.social-logo{width:40px;height:40px}}
 
 footer{padding:3rem 0;text-align:center;font-family:var(--font-display);font-size:0.6rem;color:var(--text-dim)}
 
@@ -185,11 +199,16 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offse
 <main class="wrap">
 
   <section class="hero" id="top">
-    <h1 class="hero__title">Hi, I'm <span class="accent">Raj Nair</span><br>I build backend systems<br>that actually work<span class="cursor"></span></h1>
-    <p class="hero__subtitle">Python & Go developer focused on APIs, distributed systems, and the kind of reliability that keeps things running in production.</p>
-    <div class="hero__actions">
-      <a href="#projects" class="pixel-btn">PROJECTS</a>
-      <a href="#contact" class="pixel-btn ghost">CONTACT</a>
+    <div style="display:flex;gap:2rem;align-items:center;flex-wrap:wrap">
+      <div style="flex:1;min-width:280px">
+        <h1 class="hero__title" id="heroTitle">Hi, I'm <span class="accent">Raj Nair</span><br>I build backend systems<br>that actually work</h1>
+        <p class="hero__subtitle">Python & Go developer focused on APIs, distributed systems, and the kind of reliability that keeps things running in production.</p>
+        <div class="hero__actions">
+          <a href="#projects" class="pixel-btn">PROJECTS</a>
+          <a href="#contact" class="pixel-btn ghost">CONTACT</a>
+        </div>
+      </div>
+      <img src="typing.gif" alt="Avatar typing" class="hero-avatar">
     </div>
   </section>
 
@@ -268,11 +287,11 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offse
       <div>
         <p>Hiring, collaborating, or just want to talk backend architecture? Drop a message.</p>
       </div>
-      <div class="save-point__links">
-        <a class="save-point__link" href="mailto:nairraj311@gmail.com">nairraj311@gmail.com <span>EMAIL</span></a>
-        <a class="save-point__link" href="https://github.com/RajNair06" target="_blank">github.com/RajNair06 <span>GITHUB</span></a>
-        <a class="save-point__link" href="https://linkedin.com/in/raj-n06" target="_blank">linkedin.com/in/raj-n06 <span>LINKEDIN</span></a>
-        <a class="save-point__link" href="https://x.com/RajNair06" target="_blank">x.com/RajNair06 <span>X / TWITTER</span></a>
+      <div class="social-logos">
+        <a href="mailto:nairraj311@gmail.com"><img src="gmail_logo.png" alt="Email" class="social-logo"></a>
+        <a href="https://github.com/RajNair06" target="_blank"><img src="github_logo.png" alt="GitHub" class="social-logo"></a>
+        <a href="https://linkedin.com/in/raj-n06" target="_blank"><img src="linkedin_logo.png" alt="LinkedIn" class="social-logo"></a>
+        <a href="https://x.com/RajNair06" target="_blank"><img src="x_logo.png" alt="X/Twitter" class="social-logo"></a>
       </div>
     </div>
   </section>
@@ -286,6 +305,52 @@ const toggle=document.getElementById('navToggle');
 const links=document.getElementById('navLinks');
 toggle.addEventListener('click',()=>links.classList.toggle('is-open'));
 links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('is-open')));
+
+// Position cursor after text renders
+function positionCursor(){
+  const heroTitle=document.getElementById('heroTitle');
+  if(!heroTitle)return;
+  
+  // Remove existing cursor if any
+  const existingCursor=document.querySelector('.cursor');
+  if(existingCursor)existingCursor.remove();
+  
+  // Create cursor element
+  const cursor=document.createElement('span');
+  cursor.className='cursor';
+  cursor.id='blinkingCursor';
+  
+  // Get the last text node (after "work")
+  const textNodes=[];
+  const walker=document.createTreeWalker(heroTitle,NodeFilter.SHOW_TEXT,null,false);
+  let node;
+  while(node=walker.nextNode()){
+    if(node.textContent.trim())textNodes.push(node);
+  }
+  
+  if(textNodes.length>0){
+    const lastTextNode=textNodes[textNodes.length-1];
+    const range=document.createRange();
+    range.selectNodeContents(lastTextNode);
+    const rects=range.getClientRects();
+    
+    if(rects.length>0){
+      const lastRect=rects[rects.length-1];
+      const heroRect=heroTitle.getBoundingClientRect();
+      
+      cursor.style.position='absolute';
+      cursor.style.left=(lastRect.right-heroRect.left+3)+'px';
+      cursor.style.top=(lastRect.top-heroRect.top)+'px';
+      cursor.style.height=lastRect.height+'px';
+      
+      heroTitle.style.position='relative';
+      heroTitle.appendChild(cursor);
+    }
+  }
+}
+
+window.addEventListener('load',positionCursor);
+window.addEventListener('resize',positionCursor);
 
 // Pikachu Z-path looping movement
 const pikachu=document.createElement('img');

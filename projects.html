@@ -180,6 +180,19 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offse
 
       <div class="quest pixel-panel">
         <div>
+          <div class="quest__title">Toll Gate — AI Agent Payment Gateway</div>
+          <p class="quest__desc">A policy gateway between AI agents and PayPal. Agents ask permission to move money; the gateway allows, denies, or routes to human approval, enforcing atomic spending caps and an append-only audit log. PayPal dispute webhooks dispatch an autonomous LangGraph agent that pauses durably until a human approves its refund. Served over REST and MCP with a live admin dashboard. 285 tests against real PostgreSQL.</p>
+          <div class="quest__stack">PYTHON · FASTAPI · LANGGRAPH · MCP · POSTGRESQL · REDIS · PAYPAL</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+          <a href="https://github.com/RajNair06/tollgate" target="_blank" class="pixel-btn ghost">GITHUB →</a>
+          <a href="https://rajnair06.github.io/tollgate/" target="_blank" class="pixel-btn">DOCS →</a>
+          <a href="https://tollgate-jg0z.onrender.com/" target="_blank" class="pixel-btn">LIVE →</a>
+        </div>
+      </div>
+
+      <div class="quest pixel-panel">
+        <div>
           <div class="quest__title">Atlas — Self-Healing API Gateway</div>
           <p class="quest__desc">An API gateway that heals itself when requests fail. Gemini AI triages the error, presents a recovery plan to a human on a live console, and executes the approved fix: retry with backoff, reroute to fallback, or fail gracefully. Every decision audited. 114+ tests, race-clean, ~92% proxy coverage.</p>
           <div class="quest__stack">GO · GEMINI AI · SSE · HTMX · CIRCUIT BREAKERS</div>
